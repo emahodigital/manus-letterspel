@@ -32,6 +32,9 @@
    Op de echte site bestaat die weg niet. Wil je lokaal met de echte inhoud testen, open dan met #code=<gezinscode>. */
 (function () {
   'use strict';
+  // fouten van vóór het spel geladen is: js/logboek.js neemt ze over zodra het er is
+  try { if (!window.LSvroeg) { window.LSvroeg = []; window.addEventListener('error', function (e) { if (window.LSvroeg.length < 20) window.LSvroeg.push({ t: Date.now(), b: String(e.message || ''), f: String(e.filename || '').split('/').pop() + ':' + (e.lineno || 0) }); }); } } catch (e0) { /* stil */ }
+
   var LS = window.LS = window.LS || {};
   var PAKKET = 'geheim.bin', OPSLAG = 'lsslot', MIS = 'lsslot-mis', DB = 'letterspel-slot', WINKEL = 'sleutel';
   var KOP = 33, VAST_DEEL = 21, MAX_MIS = 5, WACHT_SEC = 30, LETTER = 27;

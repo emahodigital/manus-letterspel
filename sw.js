@@ -10,7 +10,7 @@
 'use strict';
 
 /* --- gegenereerd door tools/maak-cachelijst.py: niet met de hand wijzigen --- */
-const VERSIE = '2026-11-23-4c3cbeb09e';
+const VERSIE = '2026-11-23-0393ab2b2e';
 const BESTANDEN = [
   "index.html",
   "css/ouders.css",

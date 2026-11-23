@@ -211,3 +211,17 @@ body.kolom .ou-blad > div { border-radius: 26px 26px 30px 30px; }
   .st-tekst { font-size: 64px; } .st-tekst.woord { font-size: 50px; } .st-tekst.traag { font-size: 34px; }
   .st-op { width: 92px; height: 92px; } .st-zij i { width: 62px; height: 62px; } .st-zij.goud i { width: 72px; height: 72px; }
 }
+
+/* Geluid en duur, Meld een probleem, versie (bouwer L) */
+.ou-instel-schuif { flex-wrap: wrap; }
+.ou-schuif-rij { display: flex; align-items: center; gap: 8px; flex: 1 1 100%; }
+.ou-schuif-rij small { font-size: 13px; color: #7A5A3C; }
+.ou-schuif { flex: 1 1 auto; min-height: 44px; accent-color: #E8A33D; }
+.ou-kopje { display: block; font: 800 18px/1.2 "Baloo 2", "Andika", sans-serif; margin-bottom: 8px; }
+.ou-keuze.ou-duur { display: flex; flex-wrap: wrap; }
+.ou-keuze.ou-duur button { min-width: 0; flex: 1 1 auto; padding: 4px 8px; }
+.ou-meld-rij { display: flex; gap: 8px; align-items: center; }
+.ou-veld { flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 6px 12px; border: 3px solid #52341F; border-radius: 14px; background: #FFFBF0; color: #3A2410; font: 600 17px "Andika", sans-serif; }
+.ou-meld-rij .ou-knop { flex: 0 0 auto; width: auto; min-width: 0; margin: 0; padding-left: 16px; padding-right: 16px; }
+.ou-meld-rij .ou-veld { flex: 1 1 0; }
+.ou-versie { margin: 18px 0 0; font-size: 12px; color: #9A7B5C; text-align: center; }
