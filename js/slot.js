@@ -21,6 +21,11 @@
      LS.Slot.aantal    hoeveel vaste opnames er in het spel zitten
      LS.Slot.klaar     belofte die vervuld wordt zodra het slot open is
      LS.Slot.bron      'pakket' (spelcode uit het pakket) of 'map' (losse scripts, ontwikkelversie)
+     LS.Slot.kluis()   voor js/wolk.js (online bewaren), één keer op te halen: belofte met de gezinssleutel als sleutel die
+                       de browser niet meer uitleest, en het deel `wolk` uit het pakket ({ repo, token, tak }). Zit dat deel
+                       niet in het pakket, dan komt er null en staat online bewaren uit. Het toegangsbewijs staat alleen
+                       versleuteld in het pakket en daarna in het werkgeheugen, nooit in de opslag van het toestel.
+                       Op localhost staat online bewaren uit (de tests blijven zo van de echte gegevens af), tenzij met ?wolk=1.
 
    Voor bouwers: op een lokale testserver (localhost) met ?test=1 gaat het spel open zonder pakket, dus zonder stemmen en
    met een leeg LS.Gezin (LS.Slot.proef = true). Met ?gezin=proef erbij krijgt LS.Gezin zeven verzonnen vrienden.
@@ -42,6 +47,7 @@
   var Slot = LS.Slot = { open: false, proef: false, staat: 'bezig', aantal: 0, gemaakt: '', onthouden: false };
   var meldKlaar; Slot.klaar = new Promise(function (ok) { meldKlaar = ok; });
   var records = [], spelBron = [], pakketBelofte = null;
+  var wolkDeel = null, kluisRuw = null, kluisKop = null;       // voor online bewaren (js/wolk.js), zie Slot.kluis
 
   var vraag = {};
   (location.search || '').replace(/^\?/, '').split('&').forEach(function (kv) {
@@ -151,8 +157,18 @@
       return r;
     });
   }
-  function neemOver(pak) {
-    var kop = pak.kop, g = kop.gezin || {};
+  function neemOver(pak, ruw, buf) {
+    var kop = pak.kop, g = kop.gezin || {}, w = kop.wolk;
+    // online bewaren: alleen als het pakket een opslagplek en een toegangsbewijs meegeeft
+    wolkDeel = null; kluisRuw = null; kluisKop = null;
+    if (w && typeof w.repo === 'string' && /^[\w.-]+\/[\w.-]+$/.test(w.repo) && typeof w.token === 'string' && w.token.length >= 20 && ruw && buf) {
+      wolkDeel = { repo: w.repo, token: w.token, tak: typeof w.tak === 'string' && w.tak ? w.tak : 'main' };
+      if (lokaal && typeof w.api === 'string' && /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(w.api)) wolkDeel.api = w.api;      // alleen voor de tests op een eigen computer
+      // Op een lokale testserver blijft de echte opslagplek met rust: anders zetten de tests van bouwers proefstanden tussen
+      // de voortgang van Manú. Bewust lokaal tegen de echte opslagplek testen kan met ?wolk=1.
+      if (lokaal && !wolkDeel.api && vraag.wolk !== '1') wolkDeel = null;
+      kluisRuw = new Uint8Array(ruw); kluisKop = new Uint8Array(buf.slice(0, VAST_DEEL));
+    }
     records = (Array.isArray(kop.opnames) ? kop.opnames : []).filter(function (r) {
       return r && typeof r.id === 'string' && r.id.indexOf('/') > 0 && r.lengte > 0 && r.lengte % 2 === 0 && pak.begin + r.van + r.lengte <= pak.inhoud.byteLength;
     }).map(function (r) {
@@ -169,6 +185,19 @@
     }).map(function (s) { return { naam: s.naam, tekst: lees.decode(new Uint8Array(pak.inhoud, pak.begin + s.van, s.lengte)) }; });
   }
   Slot.opnames = function () { return records; };
+  /* Voor js/wolk.js. Geeft één keer { wolk: { repo, token, tak }, sleutel (AES-GCM), merk (HMAC, voor bestandsnamen), kop (versie, rondes, zout) }.
+     De sleutels zijn niet uit te lezen (extractable: false). Een tweede aanroep geeft null. */
+  Slot.kluis = function () {
+    var w = wolkDeel, ruw = kluisRuw, kop = kluisKop;
+    wolkDeel = null; kluisRuw = null; kluisKop = null;
+    if (!w || !ruw || !kop || !kanRekenen()) return Promise.resolve(null);
+    var S = window.crypto.subtle, voor = new TextEncoder().encode('letterspel-merk'), basis = new Uint8Array(voor.length + ruw.length);
+    basis.set(voor); basis.set(ruw, voor.length);
+    return Promise.all([
+      S.importKey('raw', ruw, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']),
+      S.digest('SHA-256', basis).then(function (d) { return S.importKey('raw', d, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']); })
+    ]).then(function (k) { return { wolk: w, sleutel: k[0], merk: k[1], kop: kop }; }, function () { return null; });
+  };
 
   // → 'goed' | 'fout' (code klopt niet) | 'net' (pakket niet te halen) | 'kan-niet' (browser zonder WebCrypto) | 'leeg'
   function probeerCode(code) {
@@ -179,7 +208,7 @@
       var u8 = new Uint8Array(buf), rondes = new DataView(buf).getUint32(1), zout = u8.slice(5, VAST_DEEL);
       if (rondes < 100000 || rondes > 20000000) return 'net';
       return sleutelUit(c, zout, rondes).then(function (ruw) {
-        return ontsleutel(buf, ruw).then(function (pak) { neemOver(pak); return bewaarSleutel(ruw, zout).then(function () { return 'goed'; }, function () { return 'goed'; }); }, function () { return 'fout'; });
+        return ontsleutel(buf, ruw).then(function (pak) { neemOver(pak, ruw, buf); return bewaarSleutel(ruw, zout).then(function () { return 'goed'; }, function () { return 'goed'; }); }, function () { return 'fout'; });
       });
     }, function () { return 'net'; });
   }
@@ -187,7 +216,7 @@
     if (!kanRekenen()) return Promise.resolve('kan-niet');
     return haalPakket().then(function (buf) {
       var ruw; try { ruw = vanB64(k.s); } catch (e) { return 'fout'; }
-      return ontsleutel(buf, ruw).then(function (pak) { neemOver(pak); Slot.onthouden = true; return 'goed'; }, function () { return 'fout'; });
+      return ontsleutel(buf, ruw).then(function (pak) { neemOver(pak, ruw, buf); Slot.onthouden = true; return 'goed'; }, function () { return 'fout'; });
     }, function () { return 'net'; });
   }
 
@@ -350,8 +379,51 @@
       }, function () { zetBezig(false); zeg(TEKST.net); });
     }, 60);
   }
+  /* ---------- een nieuwe versie ophalen terwijl het slot in beeld staat ----------
+     Het aanmelden van de service worker (sw.js) en het overnemen van een nieuwe versie zit in js/bewaar.js, dus pas na het
+     ontgrendelen. Wie op het slot staat (een nieuwe gezinscode, of een fout in het slot zelf) zou zo op de oude versie
+     blijven hangen. Daarom kijkt het slot zelf: is er al een service worker van een eerdere keer, dan vraagt het om de
+     nieuwste versie, laat die het overnemen en laadt de pagina één keer opnieuw. Op het slot is er geen spel bezig, dus
+     dat kan altijd; alleen niet terwijl iemand typt (wacht tot het veld leeg is of 3 tellen stil) of terwijl het rekent.
+     Na het ontgrendelen doet dit niets meer: dan regelt js/bewaar.js het, op een rustig moment in het spel. */
+  var laatstGetypt = 0, kijktNaarVersie = false;
+  function magHerladen() { return !Slot.open && !!wortel && Slot.staat === 'slot' && (!veld || !veld.value || Date.now() - laatstGetypt > 3000); }
+  function haalNieuweVersie() {
+    if (kijktNaarVersie || !('serviceWorker' in navigator) || location.protocol === 'file:') return;
+    kijktNaarVersie = true;
+    var SW = navigator.serviceWorker, had = !!SW.controller, herladen = false;
+    function alsHetKan(fn) {
+      var kijk = setInterval(function () {
+        if (Slot.open) { clearInterval(kijk); return; }                    // ontgrendeld: js/bewaar.js neemt het over
+        if (magHerladen()) { clearInterval(kijk); fn(); }
+      }, 300);
+    }
+    function neemOver(reg) { alsHetKan(function () { try { if (reg.waiting) reg.waiting.postMessage('neem-over'); } catch (e) { /* stil */ } }); }
+    try {
+      SW.addEventListener('controllerchange', function () {
+        if (!had) { had = true; return; }                                   // de allereerste keer: niets herladen
+        if (herladen || Slot.open) return;
+        alsHetKan(function () { if (herladen) return; herladen = true; try { location.reload(); } catch (e) { /* stil */ } });
+      });
+      SW.getRegistration().then(function (reg) {
+        if (!reg) return;
+        if (reg.waiting && SW.controller) neemOver(reg);
+        reg.addEventListener('updatefound', function () {
+          var n = reg.installing; if (!n) return;
+          n.addEventListener('statechange', function () { if (n.state === 'installed' && SW.controller) neemOver(reg); });
+        });
+        // nu kijken, en opnieuw als de app weer naar voren komt of het slot lang in beeld staat
+        function kijk() { if (Slot.open) { clearInterval(elkeMinuut); return; } try { reg.update().catch(function () { /* geen internet: prima */ }); } catch (e) { /* stil */ } }
+        var elkeMinuut = setInterval(kijk, 60000);
+        document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') kijk(); });
+        kijk();
+      }).catch(function () { /* zonder service worker werkt het slot gewoon */ });
+    } catch (e) { /* stil */ }
+  }
+
   function toonSlot(eersteMelding) {
     Slot.staat = 'slot';
+    haalNieuweVersie();
     clearTimeout(wachtTimer2); wachtTimer2 = null;
     if (wachtEl) { if (wachtEl.parentNode) wachtEl.parentNode.removeChild(wachtEl); wachtEl = null; }
     if (wortel) { zeg(eersteMelding || ''); return; }
@@ -371,7 +443,7 @@
     kolom.appendChild(paneel); kolom.appendChild(nunu);
     wortel.appendChild(el('div', 'slot-bos')); wortel.appendChild(kolom);
     paneel.addEventListener('submit', function (e) { e.preventDefault(); verstuur(); });
-    veld.addEventListener('input', function () { pasLetter(); if (Slot.staat === 'slot' && !wachtNog()) zeg(''); });
+    veld.addEventListener('input', function () { laatstGetypt = Date.now(); pasLetter(); if (Slot.staat === 'slot' && !wachtNog()) zeg(''); });
     var grof = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
     // vangnet voor de iPhone: staat het veld nog 'aan' zonder toetsenbord, dan zet een tik het in dezelfde aanraking uit en weer aan
     veld.addEventListener('touchend', function () {
