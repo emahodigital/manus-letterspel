@@ -1,0 +1,21 @@
+{
+  "name": "Manú's Letterspel",
+  "short_name": "Letterspel",
+  "description": "Vang de letters met de slang en maak het woord. Een leesspel voor Manú.",
+  "lang": "nl",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#17301c",
+  "theme_color": "#1d3a22",
+  "categories": ["education", "games", "kids"],
+  "icons": [
+    { "src": "art/icoon/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "art/icoon/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "art/icoon/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "art/icoon/apple-touch-icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}

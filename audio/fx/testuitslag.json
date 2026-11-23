@@ -1,0 +1,231 @@
+{
+ "decodeer": {
+  "stroken": {
+   "kern": {
+    "staat": "klaar",
+    "ms": 94,
+    "klanken": 22
+   },
+   "akkoord": {
+    "staat": "klaar",
+    "ms": 89,
+    "klanken": 11
+   },
+   "veld": {
+    "staat": "klaar",
+    "ms": 43,
+    "klanken": 5
+   },
+   "tonen": {
+    "staat": "klaar",
+    "ms": 153,
+    "klanken": 20
+   },
+   "feest": {
+    "staat": "klaar",
+    "ms": 74,
+    "klanken": 8
+   },
+   "wereld": {
+    "staat": "klaar",
+    "ms": 77,
+    "klanken": 13
+   }
+  },
+  "klanken": 79,
+  "grootste_stilte_ms": 6.85,
+  "mediaan_stilte_ms": 2.08,
+  "decoder_hz": 48000,
+  "fouten": []
+ },
+ "onbekend": {
+  "fout": null,
+  "regels": [
+   "fx:bestaat-niet onbekend effect",
+   "fx:nogiets onbekend effect"
+  ],
+  "synth": 21,
+  "echt": [
+   "plop:echt:659:1",
+   "harp:echt:523:1",
+   "harp:echt:659:1",
+   "harp:echt:784:1",
+   "celesta:echt:523:1",
+   "celesta:echt:659:1",
+   "celesta:echt:784:1",
+   "celesta:echt:1047:1",
+   "fanfare:echt:null:1",
+   "tik:echt:784:1.049",
+   "bel:echt:null:0.75",
+   "marimba:echt:523:1.122"
+  ],
+  "controle": {
+   "grepen": 0,
+   "juisteKlank": 0,
+   "overlappen": [],
+   "rustFouten": 0,
+   "ontbreekt": 0,
+   "fragmenten": 0,
+   "pakGemMs": null,
+   "pakMaxMs": null,
+   "pakN": 0
+  }
+ },
+ "mis": [],
+ "pak": {
+  "meting": {
+   "grepen": 20,
+   "juisteKlank": 20,
+   "overlappen": [],
+   "rustFouten": 0,
+   "ontbreekt": 0,
+   "fragmenten": 41,
+   "pakGemMs": 0.22,
+   "pakMaxMs": 0.7,
+   "pakN": 20,
+   "latentieMs": 42
+  },
+  "effecten_per_bron": {
+   "echt": {
+    "floep": 7,
+    "tik": 76,
+    "plop": 20,
+    "plopLaag": 20,
+    "klik": 30,
+    "harp": 24,
+    "celesta": 24,
+    "woesj": 6,
+    "muziek:bos1": 1,
+    "fanfare": 2,
+    "ritsel": 2,
+    "muziek:bos2": 1
+   }
+  },
+  "uitgang_piek": 0.7985566854476929,
+  "muziek_regelaar_tijdens_stem": 0.3981071710586548,
+  "fouten": []
+ },
+ "terugval": {
+  "bronnen": [
+   "synth"
+  ],
+  "manifest": false,
+  "fouten": []
+ },
+ "muziek": {
+  "starts": [
+   {
+    "naam": "muziek:bos3",
+    "t": 0.5727891156462586,
+    "bron": "echt",
+    "lus": 32.7273,
+    "soort": "dag"
+   },
+   {
+    "naam": "muziek:bos3",
+    "t": 33.30008911564626,
+    "bron": "echt",
+    "lus": 32.7273,
+    "soort": "dag"
+   }
+  ],
+  "lus": 32.7273,
+  "fouten": []
+ },
+ "levels": {
+  "geluid": {
+   "grepen": 76,
+   "juisteKlank": 76,
+   "overlappen": [],
+   "rustFouten": 0,
+   "ontbreekt": 49,
+   "fragmenten": 159,
+   "pakGemMs": null,
+   "pakMaxMs": null,
+   "pakN": 0
+  },
+  "effecten": {
+   "echt": {
+    "celesta": 42,
+    "tik": 131,
+    "woesj": 11,
+    "floep": 17,
+    "plop": 63,
+    "tok": 8,
+    "veer": 2,
+    "plopLaag": 35,
+    "verf": 10,
+    "klik": 52,
+    "harp": 50,
+    "ritsel": 3,
+    "fanfare": 3,
+    "rol": 1
+   }
+  },
+  "fouten": []
+ },
+ "start": {
+  "nieuw-snel": {
+   "mediaan_s": 0.453,
+   "snelste_s": 0.426,
+   "alle": [
+    0.458,
+    0.439,
+    0.426,
+    0.529,
+    0.473,
+    0.453,
+    0.473,
+    0.451,
+    0.448
+   ]
+  },
+  "oud-snel": {
+   "mediaan_s": 0.453,
+   "snelste_s": 0.398,
+   "alle": [
+    0.398,
+    0.51,
+    0.612,
+    0.546,
+    0.449,
+    0.453,
+    0.554,
+    0.426,
+    0.449
+   ]
+  },
+  "nieuw-4G": {
+   "mediaan_s": 7.474,
+   "snelste_s": 7.46,
+   "alle": [
+    7.49,
+    7.476,
+    7.523,
+    7.473,
+    7.466,
+    7.46
+   ]
+  },
+  "oud-4G": {
+   "mediaan_s": 7.483,
+   "snelste_s": 7.456,
+   "alle": [
+    7.485,
+    7.65,
+    7.476,
+    7.481,
+    7.456,
+    7.516
+   ]
+  },
+  "kern_klaar_na_startscherm_s": {
+   "snel": 0.19,
+   "4G": 0.8
+  }
+ },
+ "luister": {
+  "knoppen": 91,
+  "fouten": []
+ }
+}

@@ -1,0 +1,97 @@
+/* Manú's Letterspel · het slot: het scherm dat om de gezinscode vraagt (js/slot.js).
+   Rustig: het bos, een crème paneel met de dikke bruine rand van het spel, een gouden hangslot en één veld. */
+#slot {
+  position: fixed; z-index: 20; inset: 0; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  background: #1d3a22; color: #3A2410; font: 400 16px/1.4 "Andika", system-ui, sans-serif;
+  opacity: 1; transition: opacity .45s ease;
+}
+#slot[hidden] { display: none; }
+#slot.weg { opacity: 0; pointer-events: none; }
+.slot-bos {
+  position: absolute; inset: 0;
+  background: #1d3a22 url("../art/hd/wereld/bos-staand-780.jpg") center top / cover no-repeat;
+}
+.slot-bos::after { content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 36%, rgba(12, 34, 17, .06) 0%, rgba(12, 34, 17, .34) 62%, rgba(9, 26, 13, .66) 100%); }
+
+.slot-kolom { position: relative; width: min(340px, 88vw); margin-top: calc(env(safe-area-inset-top, 0px) + 19vh);
+  transition: margin-top .25s ease; }
+#slot.typt .slot-kolom { margin-top: calc(env(safe-area-inset-top, 0px) + 78px); }
+@media (max-height: 640px) { .slot-kolom { margin-top: calc(env(safe-area-inset-top, 0px) + 84px); } }
+
+.slot-paneel {
+  position: relative; margin: 0; padding: 66px 22px 20px;
+  background: linear-gradient(180deg, #FFF7E6 0%, #FFE9B8 100%);
+  border: 5px solid #3A2410; border-radius: 30px;
+  box-shadow: 0 7px 0 #3A2410, 0 0 0 3px rgba(107, 70, 48, .55), 0 22px 40px rgba(8, 24, 12, .5), inset 0 3px 0 rgba(255, 255, 255, .7);
+}
+.slot-hang { position: absolute; left: 50%; top: -52px; width: 104px; height: 112px; margin-left: -52px; overflow: visible;
+  filter: drop-shadow(0 5px 0 rgba(58, 36, 16, .28)); }
+.slot-beugel { transform-origin: 84px 60px; transition: transform .38s cubic-bezier(.3, 1.6, .5, 1); }
+#slot.open .slot-beugel { transform: translateY(-13px) rotate(24deg); }
+#slot.bezig .slot-hang { animation: slot-wieg 1s ease-in-out infinite; }
+
+#slot input.slot-veld {
+  display: block; width: 100%; height: 64px; margin: 0; padding: 0 12px;
+  background: #FFFDF6; border: 4px solid #52341F; border-radius: 19px;
+  box-shadow: inset 0 4px 0 rgba(82, 52, 31, .13);
+  font: 700 27px/1 "Andika", system-ui, sans-serif; letter-spacing: .01em; color: #3A2410; text-align: center; text-transform: lowercase;
+  -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; touch-action: manipulation;
+  -webkit-appearance: none; appearance: none; outline: none; caret-color: #D9772B;
+}
+#slot input.slot-veld:focus { border-color: #3A2410; box-shadow: inset 0 4px 0 rgba(82, 52, 31, .13), 0 0 0 4px #FFCC33; }
+#slot input.slot-veld:disabled { opacity: .55; -webkit-text-fill-color: #3A2410; }
+
+.slot-knop {
+  display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; margin: 14px 0 0; padding: 0;
+  background: #FFCC33; border: 4px solid #3A2410; border-radius: 19px;
+  box-shadow: 0 5px 0 #3A2410, inset 0 -6px 0 #F0B400, inset 0 3px 0 #FFE680;
+  color: #3A2410; cursor: pointer; touch-action: manipulation; -webkit-appearance: none; appearance: none;
+}
+.slot-knop:active { transform: translateY(4px); box-shadow: 0 1px 0 #3A2410, inset 0 -3px 0 #F0B400; }
+.slot-knop:disabled { opacity: .6; }
+.slot-knop svg { width: 34px; height: 34px; display: block; }
+.slot-knop .slot-bolletjes { display: none; gap: 7px; }
+.slot-knop .slot-bolletjes i { width: 11px; height: 11px; border-radius: 50%; background: #3A2410; animation: slot-bol .9s ease-in-out infinite; }
+.slot-knop .slot-bolletjes i:nth-child(2) { animation-delay: .15s; }
+.slot-knop .slot-bolletjes i:nth-child(3) { animation-delay: .3s; }
+#slot.bezig .slot-knop svg, #slot.open .slot-knop svg { display: none; }
+#slot.bezig .slot-knop .slot-bolletjes, #slot.open .slot-knop .slot-bolletjes { display: flex; }
+
+.slot-tekst { margin: 16px 2px 0; font-size: 15.5px; line-height: 1.4; text-align: center; color: #52341F; }
+.slot-melding { margin: 8px 2px 0; min-height: 22px; font-size: 15.5px; line-height: 1.4; font-weight: 700; text-align: center; color: #A8431F; }
+.slot-melding:empty { min-height: 0; margin-top: 0; }
+
+.slot-nunu { position: absolute; right: -4px; bottom: -98px; width: 136px; height: auto; pointer-events: none;
+  filter: drop-shadow(0 6px 5px rgba(8, 24, 12, .35)); transition: opacity .2s ease; }
+#slot.typt .slot-nunu { opacity: 0; }
+@media (max-height: 640px) { .slot-nunu { display: none; } }
+
+.slot-paneel.schud { animation: slot-schud .5s cubic-bezier(.36, .07, .19, .97); }
+#slot.open .slot-hang { animation: none; }
+#slot.weg .slot-kolom { animation: slot-uit .45s ease both; }
+
+/* het wachtbeeld op een toestel dat de sleutel al heeft: zelfde kleur als het laadscherm van het spel */
+#slot-wacht { position: fixed; z-index: 19; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #1d3a22; opacity: 1; transition: opacity .3s ease; animation: slot-in .25s ease both; }
+#slot-wacht.weg { opacity: 0; pointer-events: none; }
+#slot-wacht .slot-hang { position: static; margin: 0 0 22px; width: 84px; height: 91px; animation: slot-wieg 1s ease-in-out infinite; }
+#slot-wacht .slot-bolletjes { display: flex; gap: 9px; }
+#slot-wacht .slot-bolletjes i { width: 12px; height: 12px; border-radius: 50%; background: #FFE9B8; animation: slot-bol .9s ease-in-out infinite; }
+#slot-wacht .slot-bolletjes i:nth-child(2) { animation-delay: .15s; }
+#slot-wacht .slot-bolletjes i:nth-child(3) { animation-delay: .3s; }
+@keyframes slot-in { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes slot-schud {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-9px); }
+  40%, 60% { transform: translateX(9px); }
+}
+@keyframes slot-wieg { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes slot-bol { 0%, 100% { transform: translateY(0); opacity: .45; } 40% { transform: translateY(-7px); opacity: 1; } }
+@keyframes slot-uit { to { transform: translateY(-18px) scale(1.04); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .slot-paneel.schud, #slot.bezig .slot-hang, #slot.weg .slot-kolom { animation-duration: .01s; }
+}

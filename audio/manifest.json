@@ -1,0 +1,3349 @@
+{
+ "stem": "Kitten TTS 2 Mini (Apache-2.0), stem Daan",
+ "formaat": "mp3 mono 48000 Hz 64k; telefoonketen; sterkte -18 dB RMS boven 400 Hz; piek onder -1 dBFS",
+ "woord": {
+  "maan": {
+   "pad": "woord/maan.mp3",
+   "duur": 0.72,
+   "boven400": 0.44,
+   "telefoon_db": -18.3,
+   "fonemen": "mˈaːn."
+  },
+  "roos": {
+   "pad": "woord/roos.mp3",
+   "duur": 0.765,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "fonemen": "rˈoːs."
+  },
+  "vis": {
+   "pad": "woord/vis.mp3",
+   "duur": 0.56,
+   "boven400": 0.37,
+   "telefoon_db": -18.3,
+   "fonemen": "vˈɪs."
+  },
+  "zon": {
+   "pad": "woord/zon.mp3",
+   "duur": 0.62,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "fonemen": "zˈɔn."
+  },
+  "zee": {
+   "pad": "woord/zee.mp3",
+   "duur": 0.5,
+   "boven400": 0.42,
+   "telefoon_db": -18.0,
+   "fonemen": "zˈeː."
+  },
+  "raam": {
+   "pad": "woord/raam.mp3",
+   "duur": 0.698,
+   "boven400": 0.47,
+   "telefoon_db": -18.2,
+   "fonemen": "rˈaːm."
+  },
+  "vos": {
+   "pad": "woord/vos.mp3",
+   "duur": 0.601,
+   "boven400": 0.54,
+   "telefoon_db": -18.1,
+   "fonemen": "vˈɔs."
+  },
+  "oor": {
+   "pad": "woord/oor.mp3",
+   "duur": 0.605,
+   "boven400": 0.49,
+   "telefoon_db": -18.0,
+   "fonemen": "ˈoːr."
+  },
+  "aap": {
+   "pad": "woord/aap.mp3",
+   "duur": 0.678,
+   "boven400": 0.6,
+   "telefoon_db": -18.3,
+   "fonemen": "ˈaːp."
+  },
+  "sok": {
+   "pad": "woord/sok.mp3",
+   "duur": 0.536,
+   "boven400": 0.59,
+   "telefoon_db": -18.0,
+   "fonemen": "sˈɔk."
+  },
+  "boom": {
+   "pad": "woord/boom.mp3",
+   "duur": 0.647,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈoːm."
+  },
+  "boot": {
+   "pad": "woord/boot.mp3",
+   "duur": 0.615,
+   "boven400": 0.52,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈoːt."
+  },
+  "kip": {
+   "pad": "woord/kip.mp3",
+   "duur": 0.572,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈɪp."
+  },
+  "kat": {
+   "pad": "woord/kat.mp3",
+   "duur": 0.566,
+   "boven400": 0.68,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈɑt."
+  },
+  "bal": {
+   "pad": "woord/bal.mp3",
+   "duur": 0.497,
+   "boven400": 0.7,
+   "telefoon_db": -18.1,
+   "fonemen": "bˈɑl."
+  },
+  "pen": {
+   "pad": "woord/pen.mp3",
+   "duur": 0.511,
+   "boven400": 0.38,
+   "telefoon_db": -18.1,
+   "fonemen": "pˈɛn."
+  },
+  "bus": {
+   "pad": "woord/bus.mp3",
+   "duur": 0.603,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈøs."
+  },
+  "jas": {
+   "pad": "woord/jas.mp3",
+   "duur": 0.659,
+   "boven400": 0.56,
+   "telefoon_db": -18.1,
+   "fonemen": "jˈɑs."
+  },
+  "hut": {
+   "pad": "woord/hut.mp3",
+   "duur": 0.551,
+   "boven400": 0.4,
+   "telefoon_db": -18.0,
+   "fonemen": "hˈøt."
+  },
+  "pet": {
+   "pad": "woord/pet.mp3",
+   "duur": 0.527,
+   "boven400": 0.53,
+   "telefoon_db": -18.1,
+   "fonemen": "pˈɛt."
+  },
+  "kaas": {
+   "pad": "woord/kaas.mp3",
+   "duur": 0.767,
+   "boven400": 0.61,
+   "telefoon_db": -18.2,
+   "fonemen": "kˈaːs."
+  },
+  "peer": {
+   "pad": "woord/peer.mp3",
+   "duur": 0.62,
+   "boven400": 0.39,
+   "telefoon_db": -18.0,
+   "fonemen": "pˈɪːr."
+  },
+  "beer": {
+   "pad": "woord/beer.mp3",
+   "duur": 0.581,
+   "boven400": 0.46,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈeːr."
+  },
+  "haan": {
+   "pad": "woord/haan.mp3",
+   "duur": 0.714,
+   "boven400": 0.46,
+   "telefoon_db": -18.2,
+   "fonemen": "hˈaːn."
+  },
+  "boek": {
+   "pad": "woord/boek.mp3",
+   "duur": 0.629,
+   "boven400": 0.4,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈuk."
+  },
+  "koe": {
+   "pad": "woord/koe.mp3",
+   "duur": 0.536,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈu."
+  },
+  "voet": {
+   "pad": "woord/voet.mp3",
+   "duur": 0.684,
+   "boven400": 0.37,
+   "telefoon_db": -18.0,
+   "fonemen": "vˈut."
+  },
+  "muis": {
+   "pad": "woord/muis.mp3",
+   "duur": 0.79,
+   "boven400": 0.4,
+   "telefoon_db": -18.2,
+   "fonemen": "mˈœys."
+  },
+  "huis": {
+   "pad": "woord/huis.mp3",
+   "duur": 0.774,
+   "boven400": 0.48,
+   "telefoon_db": -18.1,
+   "fonemen": "hˈœys."
+  },
+  "uil": {
+   "pad": "woord/uil.mp3",
+   "duur": 0.688,
+   "boven400": 0.43,
+   "telefoon_db": -18.1,
+   "fonemen": "ˈœyl."
+  },
+  "ui": {
+   "pad": "woord/ui.mp3",
+   "duur": 0.562,
+   "boven400": 0.44,
+   "telefoon_db": -18.2,
+   "fonemen": "ˈœy."
+  },
+  "duim": {
+   "pad": "woord/duim.mp3",
+   "duur": 0.702,
+   "boven400": 0.4,
+   "telefoon_db": -18.1,
+   "fonemen": "dˈœym."
+  },
+  "ijs": {
+   "pad": "woord/ijs.mp3",
+   "duur": 0.707,
+   "boven400": 0.43,
+   "telefoon_db": -18.2,
+   "fonemen": "ˈɛɪs."
+  },
+  "bij": {
+   "pad": "woord/bij.mp3",
+   "duur": 0.506,
+   "boven400": 0.57,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈɛɪ."
+  },
+  "geit": {
+   "pad": "woord/geit.mp3",
+   "duur": 0.651,
+   "boven400": 0.45,
+   "telefoon_db": -18.1,
+   "fonemen": "ɣˈɛɪt."
+  },
+  "ei": {
+   "pad": "woord/ei.mp3",
+   "duur": 0.524,
+   "boven400": 0.45,
+   "telefoon_db": -18.1,
+   "fonemen": "ˈɛɪ."
+  },
+  "deur": {
+   "pad": "woord/deur.mp3",
+   "duur": 0.613,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "fonemen": "dˈøːr."
+  },
+  "neus": {
+   "pad": "woord/neus.mp3",
+   "duur": 0.791,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "fonemen": "nˈøːs."
+  },
+  "jan": {
+   "pad": "woord/jan.mp3",
+   "duur": 0.581,
+   "boven400": 0.49,
+   "telefoon_db": -18.0,
+   "fonemen": "jˈɑn."
+  },
+  "mama": {
+   "pad": "woord/mama.mp3",
+   "duur": 0.889,
+   "boven400": 0.51,
+   "telefoon_db": -18.2,
+   "fonemen": "mˈaːmaː."
+  },
+  "papa": {
+   "pad": "woord/papa.mp3",
+   "duur": 0.957,
+   "boven400": 0.71,
+   "telefoon_db": -18.2,
+   "fonemen": "pˈaːpaː."
+  },
+  "nunu": {
+   "pad": "woord/nunu.mp3",
+   "duur": 0.94,
+   "boven400": 0.26,
+   "telefoon_db": -18.1,
+   "fonemen": "nˈunu."
+  },
+  "kiam": {
+   "pad": "woord/kiam.mp3",
+   "duur": 0.937,
+   "boven400": 0.36,
+   "telefoon_db": -18.1,
+   "fonemen": "kˈijɑm."
+  },
+  "manú": {
+   "pad": "woord/manu.mp3",
+   "duur": 0.964,
+   "boven400": 0.38,
+   "telefoon_db": -18.2,
+   "fonemen": "maːnˈu."
+  },
+  "oog": {
+   "pad": "woord/oog.mp3",
+   "duur": 0.588,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "fonemen": "ˈoːx."
+  },
+  "mes": {
+   "pad": "woord/mes.mp3",
+   "duur": 0.615,
+   "boven400": 0.42,
+   "telefoon_db": -18.2,
+   "fonemen": "mˈɛs."
+  },
+  "bel": {
+   "pad": "woord/bel.mp3",
+   "duur": 0.485,
+   "boven400": 0.53,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈɛl."
+  },
+  "mug": {
+   "pad": "woord/mug.mp3",
+   "duur": 0.412,
+   "boven400": 0.33,
+   "telefoon_db": -18.0,
+   "fonemen": "mˈøx."
+  },
+  "zaag": {
+   "pad": "woord/zaag.mp3",
+   "duur": 0.603,
+   "boven400": 0.52,
+   "telefoon_db": -18.1,
+   "fonemen": "zˈaːx."
+  },
+  "weg": {
+   "pad": "woord/weg.mp3",
+   "duur": 0.376,
+   "boven400": 0.51,
+   "telefoon_db": -18.1,
+   "fonemen": "ʋˈɛx."
+  },
+  "bijl": {
+   "pad": "woord/bijl.mp3",
+   "duur": 0.657,
+   "boven400": 0.51,
+   "telefoon_db": -18.1,
+   "fonemen": "bˈɛɪl."
+  },
+  "wiel": {
+   "pad": "woord/wiel.mp3",
+   "duur": 0.717,
+   "boven400": 0.24,
+   "telefoon_db": -18.1,
+   "fonemen": "ʋˈil."
+  },
+  "vuur": {
+   "pad": "woord/vuur.mp3",
+   "duur": 0.654,
+   "boven400": 0.32,
+   "telefoon_db": -18.0,
+   "fonemen": "vˈyr."
+  },
+  "muur": {
+   "pad": "woord/muur.mp3",
+   "duur": 0.699,
+   "boven400": 0.28,
+   "telefoon_db": -18.1,
+   "fonemen": "mˈyr."
+  },
+  "ring": {
+   "pad": "woord/ring.mp3",
+   "duur": 0.529,
+   "boven400": 0.32,
+   "telefoon_db": -18.0,
+   "fonemen": "rˈɪŋ."
+  },
+  "tong": {
+   "pad": "woord/tong.mp3",
+   "duur": 0.519,
+   "boven400": 0.42,
+   "telefoon_db": -18.0,
+   "fonemen": "tˈɔŋ."
+  },
+  "fiets": {
+   "pad": "woord/fiets.mp3",
+   "duur": 0.828,
+   "boven400": 0.35,
+   "telefoon_db": -18.1,
+   "fonemen": "fˈits."
+  },
+  "slang": {
+   "pad": "woord/slang.mp3",
+   "duur": 0.689,
+   "boven400": 0.56,
+   "telefoon_db": -18.1,
+   "fonemen": "slˈɑŋ."
+  },
+  "trein": {
+   "pad": "woord/trein.mp3",
+   "duur": 0.772,
+   "boven400": 0.38,
+   "telefoon_db": -18.2,
+   "fonemen": "trˈɛɪn."
+  },
+  "mier": {
+   "pad": "woord/mier.mp3",
+   "duur": 0.698,
+   "boven400": 0.25,
+   "telefoon_db": -18.1,
+   "fonemen": "mˈir."
+  },
+  "koek": {
+   "pad": "woord/koek.mp3",
+   "duur": 0.719,
+   "boven400": 0.43,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈuk."
+  },
+  "veer": {
+   "pad": "woord/veer.mp3",
+   "duur": 0.613,
+   "boven400": 0.39,
+   "telefoon_db": -18.0,
+   "fonemen": "vˈɪːr."
+  },
+  "been": {
+   "pad": "woord/been.mp3",
+   "duur": 0.683,
+   "boven400": 0.4,
+   "telefoon_db": -18.1,
+   "fonemen": "bˈeːn."
+  },
+  "tas": {
+   "pad": "woord/tas.mp3",
+   "duur": 0.61,
+   "boven400": 0.63,
+   "telefoon_db": -18.1,
+   "fonemen": "tˈɑs."
+  },
+  "bot": {
+   "pad": "woord/bot.mp3",
+   "duur": 0.512,
+   "boven400": 0.51,
+   "telefoon_db": -18.1,
+   "fonemen": "bˈɔt."
+  },
+  "pan": {
+   "pad": "woord/pan.mp3",
+   "duur": 0.547,
+   "boven400": 0.59,
+   "telefoon_db": -18.0,
+   "fonemen": "pˈɑn."
+  },
+  "rat": {
+   "pad": "woord/rat.mp3",
+   "duur": 0.591,
+   "boven400": 0.68,
+   "telefoon_db": -18.0,
+   "fonemen": "rˈɑt."
+  },
+  "hout": {
+   "pad": "woord/hout.mp3",
+   "duur": 0.72,
+   "boven400": 0.56,
+   "telefoon_db": -18.0,
+   "fonemen": "hˈʌʊt."
+  },
+  "pauw": {
+   "pad": "woord/pauw.mp3",
+   "duur": 0.538,
+   "boven400": 0.65,
+   "telefoon_db": -18.0,
+   "fonemen": "pˈʌʊ."
+  },
+  "fee": {
+   "pad": "woord/fee.mp3",
+   "duur": 0.474,
+   "boven400": 0.46,
+   "telefoon_db": -18.0,
+   "fonemen": "fˈeː."
+  },
+  "duif": {
+   "pad": "woord/duif.mp3",
+   "duur": 0.526,
+   "boven400": 0.46,
+   "telefoon_db": -18.0,
+   "fonemen": "dˈœyf."
+  }
+ },
+ "traag": {
+  "maan": {
+   "pad": "traag/maan.mp3",
+   "duur": 1.361,
+   "boven400": 0.35,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "m",
+    "aa",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.346,
+    0.961
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈaːn",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.67
+   ],
+   "opgetild_db": [
+    15.3,
+    0.0,
+    3.5
+   ]
+  },
+  "roos": {
+   "pad": "traag/roos.mp3",
+   "duur": 1.411,
+   "boven400": 0.51,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "r",
+    "oo",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.411,
+    1.011
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "rˈoːs",
+   "rek_per_klank": [
+    3.81,
+    1.0,
+    1.38
+   ],
+   "opgetild_db": [
+    6.4,
+    0.0,
+    5.9
+   ]
+  },
+  "vis": {
+   "pad": "traag/vis.mp3",
+   "duur": 1.176,
+   "boven400": 0.47,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "v",
+    "i",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.324,
+    0.776
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "vˈɪs",
+   "rek_per_klank": [
+    4.0,
+    1.18,
+    1.49
+   ],
+   "opgetild_db": [
+    20.0,
+    0.0,
+    4.0
+   ]
+  },
+  "zon": {
+   "pad": "traag/zon.mp3",
+   "duur": 1.307,
+   "boven400": 0.44,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "z",
+    "o",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.412,
+    0.907
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "zˈɔn",
+   "rek_per_klank": [
+    3.81,
+    1.0,
+    1.5
+   ],
+   "opgetild_db": [
+    0.1,
+    0.0,
+    4.4
+   ]
+  },
+  "zee": {
+   "pad": "traag/zee.mp3",
+   "duur": 0.964,
+   "boven400": 0.51,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "z",
+    "ee"
+   ],
+   "tijden": [
+    0.0,
+    0.414
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "zˈeː",
+   "rek_per_klank": [
+    3.81,
+    1.05
+   ],
+   "opgetild_db": [
+    6.4,
+    0.0
+   ]
+  },
+  "raam": {
+   "pad": "traag/raam.mp3",
+   "duur": 1.194,
+   "boven400": 0.49,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "r",
+    "aa",
+    "m"
+   ],
+   "tijden": [
+    0.0,
+    0.243,
+    0.794
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "rˈaːm",
+   "rek_per_klank": [
+    4.0,
+    1.18,
+    1.15
+   ],
+   "opgetild_db": [
+    6.2,
+    0.0,
+    1.0
+   ]
+  },
+  "vos": {
+   "pad": "traag/vos.mp3",
+   "duur": 1.313,
+   "boven400": 0.5,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "v",
+    "o",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.388,
+    0.913
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "vˈɔs",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.34
+   ],
+   "opgetild_db": [
+    17.8,
+    0.0,
+    0.6
+   ]
+  },
+  "oor": {
+   "pad": "traag/oor.mp3",
+   "duur": 0.955,
+   "boven400": 0.52,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "oo",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.555
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "ˈoːr",
+   "rek_per_klank": [
+    1.0,
+    2.05
+   ],
+   "opgetild_db": [
+    0.0,
+    10.3
+   ]
+  },
+  "aap": {
+   "pad": "traag/aap.mp3",
+   "duur": 0.801,
+   "boven400": 0.56,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "aa",
+    "p"
+   ],
+   "tijden": [
+    0.0,
+    0.551
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "ˈaːp",
+   "rek_per_klank": [
+    1.06,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0
+   ]
+  },
+  "sok": {
+   "pad": "traag/sok.mp3",
+   "duur": 1.071,
+   "boven400": 0.59,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "s",
+    "o",
+    "k"
+   ],
+   "tijden": [
+    0.0,
+    0.416,
+    0.956
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "sˈɔk",
+   "rek_per_klank": [
+    2.76,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    3.5,
+    0.0,
+    0.0
+   ]
+  },
+  "boom": {
+   "pad": "traag/boom.mp3",
+   "duur": 1.077,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "oo",
+    "m"
+   ],
+   "tijden": [
+    0.0,
+    0.125,
+    0.677
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈoːm",
+   "rek_per_klank": [
+    1.0,
+    1.16,
+    1.5
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    6.2
+   ]
+  },
+  "boot": {
+   "pad": "traag/boot.mp3",
+   "duur": 0.926,
+   "boven400": 0.49,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "oo",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.215,
+    0.769
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈoːt",
+   "rek_per_klank": [
+    1.0,
+    1.41,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "kip": {
+   "pad": "traag/kip.mp3",
+   "duur": 1.0,
+   "boven400": 0.33,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "k",
+    "i",
+    "p"
+   ],
+   "tijden": [
+    0.0,
+    0.065,
+    0.75
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈɪp",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "kat": {
+   "pad": "traag/kat.mp3",
+   "duur": 0.818,
+   "boven400": 0.49,
+   "telefoon_db": -18.3,
+   "klanken": [
+    "k",
+    "a",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.09,
+    0.66
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈɑt",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "bal": {
+   "pad": "traag/bal.mp3",
+   "duur": 1.015,
+   "boven400": 0.57,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "a",
+    "l"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.615
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɑl",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.59
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    9.0
+   ]
+  },
+  "pen": {
+   "pad": "traag/pen.mp3",
+   "duur": 0.936,
+   "boven400": 0.33,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "p",
+    "e",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.085,
+    0.536
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈɛn",
+   "rek_per_klank": [
+    1.0,
+    1.07,
+    1.27
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "bus": {
+   "pad": "traag/bus.mp3",
+   "duur": 1.068,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "u",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.215,
+    0.668
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈøs",
+   "rek_per_klank": [
+    1.0,
+    1.3,
+    1.45
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    2.3
+   ]
+  },
+  "jas": {
+   "pad": "traag/jas.mp3",
+   "duur": 1.367,
+   "boven400": 0.47,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "j",
+    "a",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.412,
+    0.967
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "jˈɑs",
+   "rek_per_klank": [
+    3.33,
+    1.0,
+    1.34
+   ],
+   "opgetild_db": [
+    4.2,
+    0.0,
+    1.4
+   ]
+  },
+  "hut": {
+   "pad": "traag/hut.mp3",
+   "duur": 1.071,
+   "boven400": 0.38,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "h",
+    "u",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.408,
+    0.908
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "hˈøt",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    8.0,
+    0.0,
+    0.0
+   ]
+  },
+  "pet": {
+   "pad": "traag/pet.mp3",
+   "duur": 0.761,
+   "boven400": 0.41,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "p",
+    "e",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.075,
+    0.515
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈɛt",
+   "rek_per_klank": [
+    1.0,
+    1.02,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "kaas": {
+   "pad": "traag/kaas.mp3",
+   "duur": 1.116,
+   "boven400": 0.67,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "k",
+    "aa",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.165,
+    0.716
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈaːs",
+   "rek_per_klank": [
+    1.0,
+    1.08,
+    1.3
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    2.9
+   ]
+  },
+  "peer": {
+   "pad": "traag/peer.mp3",
+   "duur": 1.077,
+   "boven400": 0.48,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "p",
+    "ee",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.125,
+    0.677
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈeːr",
+   "rek_per_klank": [
+    1.0,
+    1.21,
+    2.41
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    10.8
+   ]
+  },
+  "beer": {
+   "pad": "traag/beer.mp3",
+   "duur": 1.011,
+   "boven400": 0.48,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "ee",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.611
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈeːr",
+   "rek_per_klank": [
+    1.0,
+    1.09,
+    2.28
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    11.2
+   ]
+  },
+  "haan": {
+   "pad": "traag/haan.mp3",
+   "duur": 1.364,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "h",
+    "aa",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.412,
+    0.964
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "hˈaːn",
+   "rek_per_klank": [
+    2.22,
+    1.13,
+    1.62
+   ],
+   "opgetild_db": [
+    8.0,
+    0.0,
+    3.1
+   ]
+  },
+  "boek": {
+   "pad": "traag/boek.mp3",
+   "duur": 0.948,
+   "boven400": 0.36,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "oe",
+    "k"
+   ],
+   "tijden": [
+    0.0,
+    0.175,
+    0.729
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈuk",
+   "rek_per_klank": [
+    1.0,
+    1.38,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "koe": {
+   "pad": "traag/koe.mp3",
+   "duur": 1.254,
+   "boven400": 0.31,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "k",
+    "oe"
+   ],
+   "tijden": [
+    0.0,
+    0.07
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "kˈu",
+   "rek_per_klank": [
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0
+   ]
+  },
+  "voet": {
+   "pad": "traag/voet.mp3",
+   "duur": 1.122,
+   "boven400": 0.36,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "v",
+    "oe",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.415,
+    0.95
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "vˈut",
+   "rek_per_klank": [
+    3.08,
+    1.03,
+    1.0
+   ],
+   "opgetild_db": [
+    8.4,
+    0.0,
+    0.0
+   ]
+  },
+  "muis": {
+   "pad": "traag/muis.mp3",
+   "duur": 1.446,
+   "boven400": 0.46,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "m",
+    "ui",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.416,
+    1.046
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈœys",
+   "rek_per_klank": [
+    3.08,
+    1.0,
+    1.33
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    2.6
+   ]
+  },
+  "huis": {
+   "pad": "traag/huis.mp3",
+   "duur": 1.393,
+   "boven400": 0.49,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "h",
+    "ui",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.408,
+    0.993
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "hˈœys",
+   "rek_per_klank": [
+    3.64,
+    1.0,
+    1.34
+   ],
+   "opgetild_db": [
+    8.0,
+    0.0,
+    2.5
+   ]
+  },
+  "uil": {
+   "pad": "traag/uil.mp3",
+   "duur": 1.508,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "ui",
+    "l"
+   ],
+   "tijden": [
+    0.0,
+    0.99
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "ˈœyl",
+   "rek_per_klank": [
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    15.4
+   ]
+  },
+  "ui": {
+   "pad": "traag/ui.mp3",
+   "duur": 0.638,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "ui"
+   ],
+   "tijden": [
+    0.0
+   ],
+   "tijden_bron": [
+    "begin"
+   ],
+   "fonemen": "ˈœy",
+   "rek_per_klank": [
+    1.0
+   ],
+   "opgetild_db": [
+    0.0
+   ]
+  },
+  "duim": {
+   "pad": "traag/duim.mp3",
+   "duur": 1.1,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "d",
+    "ui",
+    "m"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.7
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "dˈœym",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.23
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    2.9
+   ]
+  },
+  "ijs": {
+   "pad": "traag/ijs.mp3",
+   "duur": 0.995,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "ij",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.595
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "ˈɛɪs",
+   "rek_per_klank": [
+    1.0,
+    1.35
+   ],
+   "opgetild_db": [
+    0.0,
+    1.3
+   ]
+  },
+  "bij": {
+   "pad": "traag/bij.mp3",
+   "duur": 0.652,
+   "boven400": 0.52,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "ij"
+   ],
+   "tijden": [
+    0.0,
+    0.065
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "bˈɛɪ",
+   "rek_per_klank": [
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0
+   ]
+  },
+  "geit": {
+   "pad": "traag/geit.mp3",
+   "duur": 1.113,
+   "boven400": 0.56,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "g",
+    "ei",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.265,
+    0.935
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "ɣˈɛɪt",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    17.8,
+    0.0,
+    0.0
+   ]
+  },
+  "ei": {
+   "pad": "traag/ei.mp3",
+   "duur": 0.613,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "ei"
+   ],
+   "tijden": [
+    0.0
+   ],
+   "tijden_bron": [
+    "begin"
+   ],
+   "fonemen": "ˈɛɪ",
+   "rek_per_klank": [
+    1.0
+   ],
+   "opgetild_db": [
+    0.0
+   ]
+  },
+  "deur": {
+   "pad": "traag/deur.mp3",
+   "duur": 1.013,
+   "boven400": 0.47,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "d",
+    "eu",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.613
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "dˈøːr",
+   "rek_per_klank": [
+    1.0,
+    1.25,
+    1.37
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    2.1
+   ]
+  },
+  "neus": {
+   "pad": "traag/neus.mp3",
+   "duur": 1.431,
+   "boven400": 0.47,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "n",
+    "eu",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.416,
+    1.031
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "nˈøːs",
+   "rek_per_klank": [
+    2.76,
+    1.0,
+    1.28
+   ],
+   "opgetild_db": [
+    2.5,
+    0.0,
+    4.0
+   ]
+  },
+  "jan": {
+   "pad": "traag/jan.mp3",
+   "duur": 1.28,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "j",
+    "a",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.385,
+    0.88
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "jˈɑn",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.66
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    2.9
+   ]
+  },
+  "oog": {
+   "pad": "traag/oog.mp3",
+   "duur": 0.97,
+   "boven400": 0.46,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "oo",
+    "g"
+   ],
+   "tijden": [
+    0.0,
+    0.57
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "ˈoːx",
+   "rek_per_klank": [
+    1.0,
+    1.4
+   ],
+   "opgetild_db": [
+    0.0,
+    10.4
+   ]
+  },
+  "mes": {
+   "pad": "traag/mes.mp3",
+   "duur": 1.257,
+   "boven400": 0.48,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "m",
+    "e",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.404,
+    0.857
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈɛs",
+   "rek_per_klank": [
+    1.38,
+    1.36,
+    1.37
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.5
+   ]
+  },
+  "bel": {
+   "pad": "traag/bel.mp3",
+   "duur": 0.936,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "e",
+    "l"
+   ],
+   "tijden": [
+    0.0,
+    0.085,
+    0.536
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɛl",
+   "rek_per_klank": [
+    1.0,
+    1.14,
+    1.5
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "mug": {
+   "pad": "traag/mug.mp3",
+   "duur": 1.288,
+   "boven400": 0.35,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "m",
+    "u",
+    "g"
+   ],
+   "tijden": [
+    0.0,
+    0.243,
+    0.888
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈøx",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.29
+   ],
+   "opgetild_db": [
+    20.0,
+    0.0,
+    9.0
+   ]
+  },
+  "zaag": {
+   "pad": "traag/zaag.mp3",
+   "duur": 1.3,
+   "boven400": 0.57,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "z",
+    "aa",
+    "g"
+   ],
+   "tijden": [
+    0.0,
+    0.305,
+    0.9
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "zˈaːx",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.23
+   ],
+   "opgetild_db": [
+    2.0,
+    0.0,
+    13.9
+   ]
+  },
+  "weg": {
+   "pad": "traag/weg.mp3",
+   "duur": 1.123,
+   "boven400": 0.44,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "w",
+    "e",
+    "g"
+   ],
+   "tijden": [
+    0.0,
+    0.243,
+    0.723
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "ʋˈɛx",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.65
+   ],
+   "opgetild_db": [
+    20.0,
+    0.0,
+    8.3
+   ]
+  },
+  "bijl": {
+   "pad": "traag/bijl.mp3",
+   "duur": 1.035,
+   "boven400": 0.45,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "b",
+    "ij",
+    "l"
+   ],
+   "tijden": [
+    0.0,
+    0.085,
+    0.635
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɛɪl",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.77
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "wiel": {
+   "pad": "traag/wiel.mp3",
+   "duur": 1.671,
+   "boven400": 0.4,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "w",
+    "ie",
+    "l"
+   ],
+   "tijden": [
+    0.0,
+    0.41,
+    1.24
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "ʋˈil",
+   "rek_per_klank": [
+    2.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    11.3
+   ]
+  },
+  "vuur": {
+   "pad": "traag/vuur.mp3",
+   "duur": 1.218,
+   "boven400": 0.35,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "v",
+    "uu",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.243,
+    0.818
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "vˈyr",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.66
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    20.0
+   ]
+  },
+  "muur": {
+   "pad": "traag/muur.mp3",
+   "duur": 1.371,
+   "boven400": 0.33,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "m",
+    "uu",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.368,
+    0.931
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈyr",
+   "rek_per_klank": [
+    4.0,
+    2.24,
+    1.0
+   ],
+   "opgetild_db": [
+    3.1,
+    0.0,
+    0.0
+   ]
+  },
+  "ring": {
+   "pad": "traag/ring.mp3",
+   "duur": 1.264,
+   "boven400": 0.39,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "r",
+    "i",
+    "ng"
+   ],
+   "tijden": [
+    0.0,
+    0.412,
+    0.864
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "rˈɪŋ",
+   "rek_per_klank": [
+    3.81,
+    1.2,
+    1.38
+   ],
+   "opgetild_db": [
+    7.3,
+    0.0,
+    1.2
+   ]
+  },
+  "tong": {
+   "pad": "traag/tong.mp3",
+   "duur": 1.032,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "t",
+    "o",
+    "ng"
+   ],
+   "tijden": [
+    0.0,
+    0.08,
+    0.536
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "tˈɔŋ",
+   "rek_per_klank": [
+    1.0,
+    1.61,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "fiets": {
+   "pad": "traag/fiets.mp3",
+   "duur": 1.231,
+   "boven400": 0.37,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "f",
+    "ie",
+    "t",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.156,
+    0.696,
+    0.831
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "fˈits",
+   "rek_per_klank": [
+    4.0,
+    1.02,
+    1.0,
+    2.45
+   ],
+   "opgetild_db": [
+    8.0,
+    0.0,
+    0.0,
+    3.3
+   ]
+  },
+  "slang": {
+   "pad": "traag/slang.mp3",
+   "duur": 1.414,
+   "boven400": 0.65,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "s",
+    "l",
+    "a",
+    "ng"
+   ],
+   "tijden": [
+    0.0,
+    0.156,
+    0.563,
+    1.014
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "slˈɑŋ",
+   "rek_per_klank": [
+    4.0,
+    1.74,
+    1.12,
+    1.39
+   ],
+   "opgetild_db": [
+    8.0,
+    0.0,
+    0.0,
+    5.8
+   ]
+  },
+  "trein": {
+   "pad": "traag/trein.mp3",
+   "duur": 1.418,
+   "boven400": 0.48,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "t",
+    "r",
+    "ei",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.467,
+    1.018
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "trˈɛɪn",
+   "rek_per_klank": [
+    1.0,
+    1.7,
+    1.09,
+    1.68
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0,
+    4.1
+   ]
+  },
+  "mier": {
+   "pad": "traag/mier.mp3",
+   "duur": 1.321,
+   "boven400": 0.36,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "m",
+    "ie",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.369,
+    0.921
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈir",
+   "rek_per_klank": [
+    4.0,
+    1.21,
+    1.67
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "koek": {
+   "pad": "traag/koek.mp3",
+   "duur": 1.06,
+   "boven400": 0.33,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "k",
+    "oe",
+    "k"
+   ],
+   "tijden": [
+    0.0,
+    0.135,
+    0.81
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈuk",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "veer": {
+   "pad": "traag/veer.mp3",
+   "duur": 1.217,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "v",
+    "ee",
+    "r"
+   ],
+   "tijden": [
+    0.0,
+    0.265,
+    0.817
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "vˈeːr",
+   "rek_per_klank": [
+    4.0,
+    1.12,
+    2.55
+   ],
+   "opgetild_db": [
+    19.5,
+    0.0,
+    14.3
+   ]
+  },
+  "been": {
+   "pad": "traag/been.mp3",
+   "duur": 1.114,
+   "boven400": 0.33,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "b",
+    "ee",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.16,
+    0.714
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈeːn",
+   "rek_per_klank": [
+    1.0,
+    1.41,
+    1.54
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    5.6
+   ]
+  },
+  "tas": {
+   "pad": "traag/tas.mp3",
+   "duur": 1.03,
+   "boven400": 0.52,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "t",
+    "a",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.63
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "tˈɑs",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.4
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.2
+   ]
+  },
+  "bot": {
+   "pad": "traag/bot.mp3",
+   "duur": 0.796,
+   "boven400": 0.47,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "b",
+    "o",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.64
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɔt",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "pan": {
+   "pad": "traag/pan.mp3",
+   "duur": 0.96,
+   "boven400": 0.45,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "p",
+    "a",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.09,
+    0.56
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈɑn",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.37
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "rat": {
+   "pad": "traag/rat.mp3",
+   "duur": 1.149,
+   "boven400": 0.56,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "r",
+    "a",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.388,
+    0.983
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "rˈɑt",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    12.3,
+    0.0,
+    0.0
+   ]
+  },
+  "hout": {
+   "pad": "traag/hout.mp3",
+   "duur": 1.053,
+   "boven400": 0.54,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "h",
+    "ou",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.243,
+    0.888
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "hˈʌʊt",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    7.9,
+    0.0,
+    0.0
+   ]
+  },
+  "pauw": {
+   "pad": "traag/pauw.mp3",
+   "duur": 1.1,
+   "boven400": 0.6,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "p",
+    "au",
+    "w"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.7
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈʌʊʋ",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.49
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    17.0
+   ]
+  },
+  "fee": {
+   "pad": "traag/fee.mp3",
+   "duur": 0.699,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "f",
+    "ee"
+   ],
+   "tijden": [
+    0.0,
+    0.156
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten"
+   ],
+   "fonemen": "fˈeː",
+   "rek_per_klank": [
+    4.0,
+    1.01
+   ],
+   "opgetild_db": [
+    8.0,
+    0.0
+   ]
+  },
+  "duif": {
+   "pad": "traag/duif.mp3",
+   "duur": 1.105,
+   "boven400": 0.44,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "d",
+    "ui",
+    "f"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.705
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "dˈœyf",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.38
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    8.0
+   ]
+  }
+ },
+ "klank": {
+  "m": {
+   "pad": "klank/m.mp3",
+   "duur": 0.48,
+   "boven400": 0.42,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "m",
+   "grens": "hoog/laag-verhouding",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑm.",
+   "ruw_s": 0.235,
+   "stemdeel_s": [
+    0.38,
+    0.71
+   ],
+   "geknipt_s": [
+    0.495,
+    0.73
+   ],
+   "gerekt": 2.04
+  },
+  "r": {
+   "pad": "klank/r.mp3",
+   "duur": 0.435,
+   "boven400": 0.55,
+   "telefoon_db": -18.1,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "r",
+   "methode": "begin van draagwoord, opgerekt",
+   "drager": "rˈaː.",
+   "ruw_s": 0.09,
+   "gerekt": 5.33
+  },
+  "s": {
+   "pad": "klank/s.mp3",
+   "duur": 0.48,
+   "boven400": 1.0,
+   "telefoon_db": -20.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "s",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑs.",
+   "ruw_s": 0.23,
+   "stemdeel_s": [
+    0.145,
+    0.59
+   ],
+   "geknipt_s": [
+    0.605,
+    0.835
+   ],
+   "gerekt": 2.09
+  },
+  "z": {
+   "pad": "klank/z.mp3",
+   "duur": 0.46,
+   "boven400": 0.56,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    3.0
+   ],
+   "fonemen": "z",
+   "methode": "samengesteld: stembrom van de n + ruis van de s",
+   "ruis_tov_brom": 0.5
+  },
+  "v": {
+   "pad": "klank/v.mp3",
+   "duur": 0.35,
+   "boven400": 0.57,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    3.0
+   ],
+   "fonemen": "v",
+   "methode": "samengesteld: stembrom van de n + ruis van de f",
+   "ruis_tov_brom": 0.5
+  },
+  "f": {
+   "pad": "klank/f.mp3",
+   "duur": 0.48,
+   "boven400": 0.88,
+   "telefoon_db": -20.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "f",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑf.",
+   "ruw_s": 0.215,
+   "stemdeel_s": [
+    0.14,
+    0.52
+   ],
+   "geknipt_s": [
+    0.535,
+    0.75
+   ],
+   "gerekt": 2.74
+  },
+  "l": {
+   "pad": "klank/l.mp3",
+   "duur": 0.335,
+   "boven400": 0.49,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "l",
+   "grens": "hoog/laag-verhouding",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑl.",
+   "ruw_s": 0.115,
+   "stemdeel_s": [
+    0.05,
+    0.645
+   ],
+   "geknipt_s": [
+    0.55,
+    0.665
+   ],
+   "gerekt": 3.0
+  },
+  "n": {
+   "pad": "klank/n.mp3",
+   "duur": 0.48,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "n",
+   "grens": "hoog/laag-verhouding",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑn.",
+   "ruw_s": 0.22,
+   "stemdeel_s": [
+    0.12,
+    0.72
+   ],
+   "geknipt_s": [
+    0.52,
+    0.74
+   ],
+   "gerekt": 2.18
+  },
+  "j": {
+   "pad": "klank/j.mp3",
+   "duur": 0.162,
+   "boven400": 0.59,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "j",
+   "methode": "begin van draagwoord, opgerekt",
+   "drager": "jˈaː.",
+   "ruw_s": 0.04,
+   "gerekt": 6.0
+  },
+  "w": {
+   "pad": "klank/w.mp3",
+   "duur": 0.162,
+   "boven400": 0.47,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "ʋ",
+   "methode": "begin van draagwoord, opgerekt",
+   "drager": "ʋˈaː.",
+   "ruw_s": 0.04,
+   "gerekt": 6.0
+  },
+  "h": {
+   "pad": "klank/h.mp3",
+   "duur": 0.225,
+   "boven400": 0.96,
+   "telefoon_db": -20.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "h",
+   "methode": "begin van draagwoord, opgerekt",
+   "drager": "hˈaː.",
+   "ruw_s": 0.05,
+   "gerekt": 6.0
+  },
+  "g": {
+   "pad": "klank/g.mp3",
+   "duur": 0.48,
+   "boven400": 0.9,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɣ",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑɣ.",
+   "ruw_s": 0.22,
+   "stemdeel_s": [
+    0.115,
+    0.625
+   ],
+   "geknipt_s": [
+    0.64,
+    0.86
+   ],
+   "gerekt": 2.67
+  },
+  "k": {
+   "pad": "klank/k.mp3",
+   "duur": 0.195,
+   "boven400": 0.43,
+   "telefoon_db": -18.9,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "k",
+   "methode": "plof + korte uh uit draagwoord",
+   "drager": "kˈə.",
+   "plof_s": 0.055,
+   "stem_voor_plof": 0.36
+  },
+  "p": {
+   "pad": "klank/p.mp3",
+   "duur": 0.185,
+   "boven400": 0.5,
+   "telefoon_db": -19.6,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "p",
+   "methode": "plof + korte uh uit draagwoord",
+   "drager": "pˈə.",
+   "plof_s": 0.045,
+   "stem_voor_plof": 0.33
+  },
+  "t": {
+   "pad": "klank/t.mp3",
+   "duur": 0.205,
+   "boven400": 0.43,
+   "telefoon_db": -18.9,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "t",
+   "methode": "plof + korte uh uit draagwoord",
+   "drager": "tˈə.",
+   "plof_s": 0.065,
+   "stem_voor_plof": 0.0
+  },
+  "b": {
+   "pad": "klank/b.mp3",
+   "duur": 0.14,
+   "boven400": 0.55,
+   "telefoon_db": -18.9,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "b",
+   "methode": "plof + korte uh uit draagwoord",
+   "drager": "bˈə.",
+   "plof_s": 0.0,
+   "stem_voor_plof": 1.0
+  },
+  "d": {
+   "pad": "klank/d.mp3",
+   "duur": 0.14,
+   "boven400": 0.44,
+   "telefoon_db": -18.8,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "d",
+   "methode": "plof + korte uh uit draagwoord",
+   "drager": "dˈə.",
+   "plof_s": 0.0,
+   "stem_voor_plof": 0.0
+  },
+  "a": {
+   "pad": "klank/a.mp3",
+   "duur": 0.22,
+   "boven400": 0.69,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɑ",
+   "gerekt": 1.33,
+   "methode": "korte klinker uit draagwoord geknipt",
+   "drager": "kˈɑt.",
+   "ruw_s": 0.165
+  },
+  "aa": {
+   "pad": "klank/aa.mp3",
+   "duur": 0.62,
+   "boven400": 0.57,
+   "telefoon_db": -18.1,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "aː",
+   "methode": "klinker als los woord"
+  },
+  "e": {
+   "pad": "klank/e.mp3",
+   "duur": 0.19,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɛ",
+   "methode": "korte klinker uit draagwoord geknipt",
+   "drager": "pˈɛt.",
+   "ruw_s": 0.19
+  },
+  "ee": {
+   "pad": "klank/ee.mp3",
+   "duur": 0.62,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "eː",
+   "methode": "klinker als los woord"
+  },
+  "i": {
+   "pad": "klank/i.mp3",
+   "duur": 0.22,
+   "boven400": 0.42,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɪ",
+   "gerekt": 1.19,
+   "methode": "korte klinker uit draagwoord geknipt",
+   "drager": "kˈɪp.",
+   "ruw_s": 0.185
+  },
+  "ie": {
+   "pad": "klank/ie.mp3",
+   "duur": 0.62,
+   "boven400": 0.45,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "i",
+   "methode": "klinker als los woord"
+  },
+  "o": {
+   "pad": "klank/o.mp3",
+   "duur": 0.22,
+   "boven400": 0.57,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɔ",
+   "gerekt": 1.57,
+   "methode": "korte klinker uit draagwoord geknipt",
+   "drager": "pˈɔt.",
+   "ruw_s": 0.14
+  },
+  "oo": {
+   "pad": "klank/oo.mp3",
+   "duur": 0.62,
+   "boven400": 0.47,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "oː",
+   "methode": "klinker als los woord"
+  },
+  "u": {
+   "pad": "klank/u.mp3",
+   "duur": 0.22,
+   "boven400": 0.47,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ø",
+   "gerekt": 1.57,
+   "methode": "korte klinker uit draagwoord geknipt",
+   "drager": "pˈøt.",
+   "ruw_s": 0.14
+  },
+  "uu": {
+   "pad": "klank/uu.mp3",
+   "duur": 0.62,
+   "boven400": 0.48,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "y",
+   "methode": "klinker als los woord"
+  },
+  "oe": {
+   "pad": "klank/oe.mp3",
+   "duur": 0.62,
+   "boven400": 0.47,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "u",
+   "methode": "klinker als los woord"
+  },
+  "eu": {
+   "pad": "klank/eu.mp3",
+   "duur": 0.62,
+   "boven400": 0.46,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "øː",
+   "methode": "klinker als los woord"
+  },
+  "ui": {
+   "pad": "klank/ui.mp3",
+   "duur": 0.62,
+   "boven400": 0.43,
+   "telefoon_db": -18.1,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "œy",
+   "methode": "klinker als los woord"
+  },
+  "ij": {
+   "pad": "klank/ij.mp3",
+   "duur": 0.62,
+   "boven400": 0.46,
+   "telefoon_db": -18.1,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɛɪ",
+   "methode": "klinker als los woord"
+  },
+  "ei": {
+   "pad": "klank/ei.mp3",
+   "duur": 0.62,
+   "boven400": 0.46,
+   "telefoon_db": -18.1,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ɛɪ",
+   "methode": "klinker als los woord"
+  },
+  "ou": {
+   "pad": "klank/ou.mp3",
+   "duur": 0.62,
+   "boven400": 0.58,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ʌʊ",
+   "methode": "klinker als los woord"
+  },
+  "au": {
+   "pad": "klank/au.mp3",
+   "duur": 0.62,
+   "boven400": 0.58,
+   "telefoon_db": -18.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "ʌʊ",
+   "methode": "klinker als los woord"
+  },
+  "ng": {
+   "pad": "klank/ng.mp3",
+   "duur": 0.48,
+   "boven400": 0.42,
+   "telefoon_db": -18.0,
+   "keten": [
+    2.5,
+    -8.0,
+    5.0
+   ],
+   "fonemen": "ŋ",
+   "grens": "hoog/laag-verhouding",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑŋ.",
+   "ruw_s": 0.19,
+   "stemdeel_s": [
+    0.415,
+    0.71
+   ],
+   "geknipt_s": [
+    0.54,
+    0.73
+   ],
+   "gerekt": 2.53
+  },
+  "ch": {
+   "pad": "klank/ch.mp3",
+   "duur": 0.26,
+   "boven400": 0.87,
+   "telefoon_db": -20.0,
+   "keten": [
+    0.6,
+    -4.0,
+    4.0
+   ],
+   "fonemen": "x",
+   "methode": "uit slot van draagwoord geknipt",
+   "drager": "ˈɑx.",
+   "ruw_s": 0.355,
+   "stemdeel_s": [
+    0.135,
+    0.58
+   ],
+   "geknipt_s": [
+    0.595,
+    0.95
+   ]
+  }
+ },
+ "zin": {
+  "hoi": {
+   "pad": "zin/hoi.mp3",
+   "duur": 0.848,
+   "boven400": 0.47,
+   "telefoon_db": -18.1,
+   "tekst": "Hoi Manú!",
+   "fonemen": "hˈoːi maːnˈu!"
+  },
+  "intro": {
+   "pad": "zin/intro.mp3",
+   "duur": 3.618,
+   "boven400": 0.45,
+   "telefoon_db": -18.1,
+   "tekst": "O nee! Kiam schudt het boek. Alle letters waaien weg! Vang jij ze terug?",
+   "fonemen": "ˈoː nˈeː! kˈijɑm sxˈøt hət bˈuk. ˈɑlə lˈɛtərs ʋˈaːjən ʋˈɛx! vˈɑŋ jɛɪ zə tərˈøx?"
+  },
+  "doel": {
+   "pad": "zin/doel.mp3",
+   "duur": 1.953,
+   "boven400": 0.49,
+   "telefoon_db": -18.1,
+   "tekst": "Vang de letters. Dan maak je het woord!",
+   "fonemen": "vˈɑŋ də lˈɛtərs. dˈɑn mˈaːk jə hət ʋˈɔːrt!"
+  },
+  "veeg": {
+   "pad": "zin/veeg.mp3",
+   "duur": 1.086,
+   "boven400": 0.41,
+   "telefoon_db": -18.1,
+   "tekst": "Veeg met je vinger.",
+   "fonemen": "vˈeːx mɛt jə vˈɪŋər."
+  },
+  "pak_deze": {
+   "pad": "zin/pak_deze.mp3",
+   "duur": 1.088,
+   "boven400": 0.57,
+   "telefoon_db": -18.1,
+   "tekst": "Pak deze maar.",
+   "fonemen": "pˈɑk dˌeːzə maːr."
+  },
+  "eerst_deze": {
+   "pad": "zin/eerst_deze.mp3",
+   "duur": 0.94,
+   "boven400": 0.46,
+   "telefoon_db": -18.0,
+   "tekst": "Eerst deze.",
+   "fonemen": "ˈɪːrs tˌeːzə."
+  },
+  "luister": {
+   "pad": "zin/luister.mp3",
+   "duur": 1.006,
+   "boven400": 0.54,
+   "telefoon_db": -18.1,
+   "tekst": "Luister goed.",
+   "fonemen": "lˈœystər ɣˈut."
+  },
+  "kijk_letter": {
+   "pad": "zin/kijk_letter.mp3",
+   "duur": 1.383,
+   "boven400": 0.5,
+   "telefoon_db": -18.2,
+   "tekst": "Kijk goed naar de letter.",
+   "fonemen": "kˈɛɪk ɣˈut naːr də lˈɛtər."
+  },
+  "lees_mee": {
+   "pad": "zin/lees_mee.mp3",
+   "duur": 0.967,
+   "boven400": 0.46,
+   "telefoon_db": -18.1,
+   "tekst": "Lees maar mee.",
+   "fonemen": "lˈeːs maːr mˈeː."
+  },
+  "stenen": {
+   "pad": "zin/stenen.mp3",
+   "duur": 1.459,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "tekst": "Stenen voor je boomhut!",
+   "fonemen": "stˈeːnən vɔːr jə bˈoːmhøt!"
+  },
+  "kiam": {
+   "pad": "zin/kiam.mp3",
+   "duur": 0.863,
+   "boven400": 0.48,
+   "telefoon_db": -18.0,
+   "tekst": "Hé, Kiam!",
+   "fonemen": "hˈeː, kˈijɑm!"
+  },
+  "vang": {
+   "pad": "zin/vang.mp3",
+   "duur": 1.111,
+   "boven400": 0.57,
+   "telefoon_db": -18.1,
+   "tekst": "Vang wat je hoort!",
+   "fonemen": "vˈɑŋ ʋɑt jə hˈɔːrt!"
+  },
+  "welk_woord": {
+   "pad": "zin/welk_woord.mp3",
+   "duur": 1.263,
+   "boven400": 0.53,
+   "telefoon_db": -18.0,
+   "tekst": "Welk woord is dit?",
+   "fonemen": "ʋˈɛlk ʋˈɔːrt ɪs dɪt?"
+  },
+  "welke_klank": {
+   "pad": "zin/welke_klank.mp3",
+   "duur": 1.289,
+   "boven400": 0.55,
+   "telefoon_db": -18.2,
+   "tekst": "Welke klank hoort erbij?",
+   "fonemen": "ʋˈɛlkə klˈɑŋk hˈɔːrt ɛrbˈɛɪ?"
+  },
+  "bouw": {
+   "pad": "zin/bouw.mp3",
+   "duur": 1.614,
+   "boven400": 0.59,
+   "telefoon_db": -18.2,
+   "tekst": "Kies maar. Wat ga je bouwen?",
+   "fonemen": "kˈis maːr. ʋɑt ɣˈaː jə bˈʌʊən?"
+  },
+  "boek": {
+   "pad": "zin/boek.mp3",
+   "duur": 1.954,
+   "boven400": 0.44,
+   "telefoon_db": -18.1,
+   "tekst": "Dit zijn jouw woorden. Tik er maar op.",
+   "fonemen": "dɪt zɛɪn jʌʊ ʋˈɔːrdən. tˈɪk ər maːr ˈɔp."
+  },
+  "zeg_het": {
+   "pad": "zin/zeg_het.mp3",
+   "duur": 1.177,
+   "boven400": 0.55,
+   "telefoon_db": -18.1,
+   "tekst": "Zeg jij het maar!",
+   "fonemen": "zˈɛx jɛɪ hət maːr!"
+  },
+  "komt_spelen": {
+   "pad": "zin/komt_spelen.mp3",
+   "duur": 1.383,
+   "boven400": 0.49,
+   "telefoon_db": -18.1,
+   "tekst": "Kom maar in de boomhut!",
+   "fonemen": "kˈɔm maːr ɪn də bˈoːmhøt!"
+  },
+  "plant": {
+   "pad": "zin/plant.mp3",
+   "duur": 1.257,
+   "boven400": 0.43,
+   "telefoon_db": -18.2,
+   "tekst": "Zet hem maar neer.",
+   "fonemen": "zˈɛt hˈɛm maːr nˈɪːr."
+  },
+  "dag": {
+   "pad": "zin/dag.mp3",
+   "duur": 1.21,
+   "boven400": 0.43,
+   "telefoon_db": -18.1,
+   "tekst": "Tot morgen, Manú!",
+   "fonemen": "tɔt mˈɔrɣən, maːnˈu!"
+  },
+  "geen_kleur": {
+   "pad": "zin/geen_kleur.mp3",
+   "duur": 2.265,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "tekst": "Nu zonder kleur. Kijk maar naar de letters.",
+   "fonemen": "nˈy zˈɔndər klˈøːr. kˈɛɪk maːr naːr də lˈɛtərs."
+  },
+  "je_naam": {
+   "pad": "zin/je_naam.mp3",
+   "duur": 1.422,
+   "boven400": 0.51,
+   "telefoon_db": -18.2,
+   "tekst": "Daar hangt je naam, Manú.",
+   "fonemen": "dˈaːr hˈɑŋt jə nˈaːm, maːnˈu."
+  }
+ }
+}

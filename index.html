@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Manú's Letterspel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Letterspel">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1d3a22">
+<link rel="icon" href="art/icoon/icon-192.png">
+<link rel="apple-touch-icon" href="art/icoon/apple-touch-icon-180.png">
+<link rel="preload" href="fonts/andika-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/baloo-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/spel.css">
+<link rel="stylesheet" href="css/ouders.css">
+<link rel="stylesheet" href="css/slot.css">
+<link rel="manifest" href="manifest.webmanifest">
+<!-- opstartbeelden voor de app op het beginscherm van de iPhone (gemaakt met tools/maak-opstartbeelden.py) -->
+<link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1320x2868.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1290x2796.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1284x2778.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1260x2736.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1242x2688.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="art/opstart/opstart-828x1792.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1242x2208.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1206x2622.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1179x2556.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1170x2532.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="art/opstart/opstart-1125x2436.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="art/opstart/opstart-750x1334.jpg">
+</head>
+<body>
+<div id="achter" aria-hidden="true"></div>
+<div id="kader"><canvas id="doek" aria-label="Manú's Letterspel"></canvas></div>
+<div id="veilig" aria-hidden="true"></div>
+
+<!-- Het spel zit in het pakket en start pas na de gezinscode. -->
+<script src="js/slot.js"></script>
+</body>
+</html>
