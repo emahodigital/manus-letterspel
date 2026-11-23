@@ -498,6 +498,83 @@
    "boven400": 0.46,
    "telefoon_db": -18.0,
    "fonemen": "dˈœyf."
+  },
+  "man": {
+   "pad": "woord/man.mp3",
+   "duur": 0.561,
+   "boven400": 0.48,
+   "telefoon_db": -18.3,
+   "fonemen": "mˈɑn."
+  },
+  "pin": {
+   "pad": "woord/pin.mp3",
+   "duur": 0.52,
+   "boven400": 0.27,
+   "telefoon_db": -18.1,
+   "fonemen": "pˈɪn."
+  },
+  "pit": {
+   "pad": "woord/pit.mp3",
+   "duur": 0.508,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "fonemen": "pˈɪt."
+  },
+  "bos": {
+   "pad": "woord/bos.mp3",
+   "duur": 0.598,
+   "boven400": 0.52,
+   "telefoon_db": -18.1,
+   "fonemen": "bˈɔs."
+  },
+  "mus": {
+   "pad": "woord/mus.mp3",
+   "duur": 0.641,
+   "boven400": 0.36,
+   "telefoon_db": -18.1,
+   "fonemen": "mˈøs."
+  },
+  "kop": {
+   "pad": "woord/kop.mp3",
+   "duur": 0.597,
+   "boven400": 0.53,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈɔp."
+  },
+  "kap": {
+   "pad": "woord/kap.mp3",
+   "duur": 0.607,
+   "boven400": 0.72,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈɑp."
+  },
+  "bak": {
+   "pad": "woord/bak.mp3",
+   "duur": 0.461,
+   "boven400": 0.65,
+   "telefoon_db": -18.1,
+   "fonemen": "bˈɑk."
+  },
+  "bek": {
+   "pad": "woord/bek.mp3",
+   "duur": 0.281,
+   "boven400": 0.56,
+   "telefoon_db": -18.0,
+   "fonemen": "bˈɛk."
+  },
+  "rok": {
+   "pad": "woord/rok.mp3",
+   "duur": 0.566,
+   "boven400": 0.5,
+   "telefoon_db": -18.0,
+   "fonemen": "rˈɔk."
+  },
+  "kus": {
+   "pad": "woord/kus.mp3",
+   "duur": 0.647,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "fonemen": "kˈøs."
   }
  },
  "traag": {
@@ -2562,6 +2639,358 @@
     0.0,
     8.0
    ]
+  },
+  "man": {
+   "pad": "traag/man.mp3",
+   "duur": 1.265,
+   "boven400": 0.48,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "m",
+    "a",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.414,
+    0.865
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈɑn",
+   "rek_per_klank": [
+    2.42,
+    1.03,
+    1.47
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    1.3
+   ]
+  },
+  "pin": {
+   "pad": "traag/pin.mp3",
+   "duur": 0.97,
+   "boven400": 0.31,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "p",
+    "i",
+    "n"
+   ],
+   "tijden": [
+    0.0,
+    0.115,
+    0.57
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈɪn",
+   "rek_per_klank": [
+    1.0,
+    1.48,
+    1.22
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.1
+   ]
+  },
+  "pit": {
+   "pad": "traag/pit.mp3",
+   "duur": 0.805,
+   "boven400": 0.34,
+   "telefoon_db": -18.0,
+   "klanken": [
+    "p",
+    "i",
+    "t"
+   ],
+   "tijden": [
+    0.0,
+    0.185,
+    0.639
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "pˈɪt",
+   "rek_per_klank": [
+    1.0,
+    1.38,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "bos": {
+   "pad": "traag/bos.mp3",
+   "duur": 0.995,
+   "boven400": 0.46,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "b",
+    "o",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.06,
+    0.595
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɔs",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.47
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "mus": {
+   "pad": "traag/mus.mp3",
+   "duur": 1.293,
+   "boven400": 0.36,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "m",
+    "u",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.243,
+    0.893
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "mˈøs",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.35
+   ],
+   "opgetild_db": [
+    20.0,
+    0.0,
+    1.2
+   ]
+  },
+  "kop": {
+   "pad": "traag/kop.mp3",
+   "duur": 0.765,
+   "boven400": 0.44,
+   "telefoon_db": -18.4,
+   "klanken": [
+    "k",
+    "o",
+    "p"
+   ],
+   "tijden": [
+    0.0,
+    0.075,
+    0.515
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈɔp",
+   "rek_per_klank": [
+    1.0,
+    1.02,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "kap": {
+   "pad": "traag/kap.mp3",
+   "duur": 0.79,
+   "boven400": 0.53,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "k",
+    "a",
+    "p"
+   ],
+   "tijden": [
+    0.0,
+    0.095,
+    0.54
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈɑp",
+   "rek_per_klank": [
+    1.0,
+    1.01,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "bak": {
+   "pad": "traag/bak.mp3",
+   "duur": 0.829,
+   "boven400": 0.48,
+   "telefoon_db": -18.2,
+   "klanken": [
+    "b",
+    "a",
+    "k"
+   ],
+   "tijden": [
+    0.0,
+    0.09,
+    0.68
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɑk",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "bek": {
+   "pad": "traag/bek.mp3",
+   "duur": 0.716,
+   "boven400": 0.37,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "b",
+    "e",
+    "k"
+   ],
+   "tijden": [
+    0.0,
+    0.085,
+    0.58
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "bˈɛk",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "rok": {
+   "pad": "traag/rok.mp3",
+   "duur": 1.207,
+   "boven400": 0.47,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "r",
+    "o",
+    "k"
+   ],
+   "tijden": [
+    0.0,
+    0.408,
+    1.033
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "rˈɔk",
+   "rek_per_klank": [
+    4.0,
+    1.0,
+    1.0
+   ],
+   "opgetild_db": [
+    15.8,
+    0.0,
+    0.0
+   ]
+  },
+  "kus": {
+   "pad": "traag/kus.mp3",
+   "duur": 1.025,
+   "boven400": 0.41,
+   "telefoon_db": -18.1,
+   "klanken": [
+    "k",
+    "u",
+    "s"
+   ],
+   "tijden": [
+    0.0,
+    0.09,
+    0.625
+   ],
+   "tijden_bron": [
+    "begin",
+    "gemeten",
+    "gemeten"
+   ],
+   "fonemen": "kˈøs",
+   "rek_per_klank": [
+    1.0,
+    1.0,
+    1.65
+   ],
+   "opgetild_db": [
+    0.0,
+    0.0,
+    0.7
+   ]
   }
  },
  "klank": {
@@ -3344,6 +3773,583 @@
    "telefoon_db": -18.2,
    "tekst": "Daar hangt je naam, Manú.",
    "fonemen": "dˈaːr hˈɑŋt jə nˈaːm, maːnˈu."
+  },
+  "post": {
+   "pad": "zin/post.mp3",
+   "duur": 1.234,
+   "boven400": 0.52,
+   "telefoon_db": -18.1,
+   "tekst": "Er is post voor jou!",
+   "fonemen": "ər ɪs pˈɔst vɔːr jˈʌʊ!"
+  },
+  "voor_wie": {
+   "pad": "zin/voor_wie.mp3",
+   "duur": 1.276,
+   "boven400": 0.44,
+   "telefoon_db": -18.1,
+   "tekst": "Voor wie is de kaart?",
+   "fonemen": "vɔːr ʋˈi ɪs də kˈaːrt?"
+  }
+ },
+ "zinwoord": {
+  "de": {
+   "pad": "zinwoord/de.mp3",
+   "duur": 0.461,
+   "boven400": 0.43,
+   "telefoon_db": -18.1,
+   "fonemen": "də."
+  },
+  "het": {
+   "pad": "zinwoord/het.mp3",
+   "duur": 0.561,
+   "boven400": 0.48,
+   "telefoon_db": -18.1,
+   "fonemen": "hˈɛt."
+  },
+  "een": {
+   "pad": "zinwoord/een.mp3",
+   "duur": 0.478,
+   "boven400": 0.26,
+   "telefoon_db": -18.2,
+   "fonemen": "ən."
+  },
+  "in": {
+   "pad": "zinwoord/in.mp3",
+   "duur": 0.485,
+   "boven400": 0.22,
+   "telefoon_db": -18.1,
+   "fonemen": "ˈɪn."
+  },
+  "op": {
+   "pad": "zinwoord/op.mp3",
+   "duur": 0.491,
+   "boven400": 0.53,
+   "telefoon_db": -18.0,
+   "fonemen": "ˈɔp."
+  },
+  "is": {
+   "pad": "zinwoord/is.mp3",
+   "duur": 0.595,
+   "boven400": 0.34,
+   "telefoon_db": -18.1,
+   "fonemen": "ˈɪs."
+  },
+  "zit": {
+   "pad": "zinwoord/zit.mp3",
+   "duur": 0.507,
+   "boven400": 0.38,
+   "telefoon_db": -18.1,
+   "fonemen": "zˈɪt."
+  },
+  "eet": {
+   "pad": "zinwoord/eet.mp3",
+   "duur": 0.663,
+   "boven400": 0.4,
+   "telefoon_db": -18.1,
+   "fonemen": "ˈeːt."
+  },
+  "ziet": {
+   "pad": "zinwoord/ziet.mp3",
+   "duur": 0.64,
+   "boven400": 0.31,
+   "telefoon_db": -18.1,
+   "fonemen": "zˈit."
+  },
+  "pakt": {
+   "pad": "zinwoord/pakt.mp3",
+   "duur": 0.635,
+   "boven400": 0.7,
+   "telefoon_db": -18.0,
+   "fonemen": "pˈɑkt."
+  },
+  "kust": {
+   "pad": "zinwoord/kust.mp3",
+   "duur": 0.647,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "fonemen": "kˈøst."
+  }
+ },
+ "blad": {
+  "1": {
+   "pad": "blad/1.mp3",
+   "duur": 8.751,
+   "tekst": "kiam pakt de sok. de sok is in de zee. een vis ziet de sok. de vis eet de sok.",
+   "woorden": [
+    "kiam",
+    "pakt",
+    "de",
+    "sok",
+    "de",
+    "sok",
+    "is",
+    "in",
+    "de",
+    "zee",
+    "een",
+    "vis",
+    "ziet",
+    "de",
+    "sok",
+    "de",
+    "vis",
+    "eet",
+    "de",
+    "sok"
+   ],
+   "tijden": [
+    0.0,
+    0.661,
+    1.061,
+    1.336,
+    2.409,
+    2.684,
+    3.159,
+    3.434,
+    3.584,
+    3.784,
+    4.802,
+    5.052,
+    5.402,
+    5.702,
+    5.977,
+    7.022,
+    7.247,
+    7.747,
+    8.022,
+    8.272
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "kˈijɑm pˈɑk tə sˈɔk. | də sˈɔk ɪs ɪn də zˈeː. | ən vˈɪ sˈi tə sˈɔk. | də vˈɪs ˈeː tə sˈɔk.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.44,
+   "telefoon_db": -18.1
+  },
+  "2": {
+   "pad": "blad/2.mp3",
+   "duur": 9.444,
+   "tekst": "de bal is in de boom. de kat zit op de bal. papa pakt de kat. mama pakt de bal.",
+   "woorden": [
+    "de",
+    "bal",
+    "is",
+    "in",
+    "de",
+    "boom",
+    "de",
+    "kat",
+    "zit",
+    "op",
+    "de",
+    "bal",
+    "papa",
+    "pakt",
+    "de",
+    "kat",
+    "mama",
+    "pakt",
+    "de",
+    "bal"
+   ],
+   "tijden": [
+    0.0,
+    0.184,
+    0.684,
+    0.959,
+    1.084,
+    1.259,
+    2.332,
+    2.557,
+    2.957,
+    3.307,
+    3.507,
+    3.707,
+    5.273,
+    5.973,
+    6.348,
+    6.548,
+    7.668,
+    8.343,
+    8.718,
+    8.918
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "də bˈɑl ɪs ɪn də bˈoːm. | də kˈɑt zˈɪt ɔp də bˈɑl. | pˈaːpaː pˈɑk tə kˈɑt. | mˈaːmaː pˈɑk tə bˈɑl.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.6,
+   "telefoon_db": -18.1
+  },
+  "3": {
+   "pad": "blad/3.mp3",
+   "duur": 9.024,
+   "tekst": "manú zit in de hut. een haan ziet de pet. de haan pakt de pet. de haan zit op de bus.",
+   "woorden": [
+    "manú",
+    "zit",
+    "in",
+    "de",
+    "hut",
+    "een",
+    "haan",
+    "ziet",
+    "de",
+    "pet",
+    "de",
+    "haan",
+    "pakt",
+    "de",
+    "pet",
+    "de",
+    "haan",
+    "zit",
+    "op",
+    "de",
+    "bus"
+   ],
+   "tijden": [
+    0.007,
+    0.682,
+    1.057,
+    1.182,
+    1.332,
+    2.361,
+    2.611,
+    3.136,
+    3.436,
+    3.686,
+    4.746,
+    4.971,
+    5.421,
+    5.771,
+    5.971,
+    7.026,
+    7.251,
+    7.726,
+    8.076,
+    8.251,
+    8.426
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "maːnˈu zˈɪt ɪn də hˈøt. | ən hˈaːn zˈi tə pˈɛt. | də hˈaːn pˈɑk tə pˈɛt. | də hˈaːn zˈɪt ɔp də bˈøs.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.46,
+   "telefoon_db": -18.2
+  },
+  "4": {
+   "pad": "blad/4.mp3",
+   "duur": 9.522,
+   "tekst": "de muis zit in een boek. een uil ziet de muis. de muis zit op de koe. de koe eet een ui.",
+   "woorden": [
+    "de",
+    "muis",
+    "zit",
+    "in",
+    "een",
+    "boek",
+    "een",
+    "uil",
+    "ziet",
+    "de",
+    "muis",
+    "de",
+    "muis",
+    "zit",
+    "op",
+    "de",
+    "koe",
+    "de",
+    "koe",
+    "eet",
+    "een",
+    "ui"
+   ],
+   "tijden": [
+    0.0,
+    0.213,
+    0.738,
+    1.087,
+    1.238,
+    1.462,
+    2.932,
+    3.257,
+    3.732,
+    4.032,
+    4.257,
+    5.459,
+    5.684,
+    6.134,
+    6.484,
+    6.684,
+    6.909,
+    7.796,
+    8.021,
+    8.471,
+    8.821,
+    9.096
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "də mˈœy sˈɪt ɪn ən bˈuk. | ən ˈœyl zˈi tə mˈœys. | də mˈœy sˈɪt ɔp də kˈu. | də kˈu ˈeːt ən ˈœy.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.4,
+   "telefoon_db": -18.1
+  },
+  "5": {
+   "pad": "blad/5.mp3",
+   "duur": 8.974,
+   "tekst": "kiam eet een ijs. de geit ziet het ijs. de geit eet het ijs. mama kust kiam.",
+   "woorden": [
+    "kiam",
+    "eet",
+    "een",
+    "ijs",
+    "de",
+    "geit",
+    "ziet",
+    "het",
+    "ijs",
+    "de",
+    "geit",
+    "eet",
+    "het",
+    "ijs",
+    "mama",
+    "kust",
+    "kiam"
+   ],
+   "tijden": [
+    0.0,
+    0.669,
+    1.019,
+    1.294,
+    2.441,
+    2.666,
+    3.141,
+    3.391,
+    3.641,
+    4.797,
+    5.022,
+    5.547,
+    5.772,
+    6.022,
+    7.233,
+    7.808,
+    8.333
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "kˈijɑm ˈeːt ən ˈɛɪs. | də ɣˈɛɪt zˈit hət ˈɛɪs. | də ɣˈɛɪt ˈeːt hət ˈɛɪs. | mˈaːmaː kˈøst kˈijɑm.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.47,
+   "telefoon_db": -18.2
+  },
+  "6": {
+   "pad": "blad/6.mp3",
+   "duur": 8.862,
+   "tekst": "een fee zit op de deur. nunu ziet de fee. de fee pakt een roos. de fee kust nunu.",
+   "woorden": [
+    "een",
+    "fee",
+    "zit",
+    "op",
+    "de",
+    "deur",
+    "nunu",
+    "ziet",
+    "de",
+    "fee",
+    "de",
+    "fee",
+    "pakt",
+    "een",
+    "roos",
+    "de",
+    "fee",
+    "kust",
+    "nunu"
+   ],
+   "tijden": [
+    0.0,
+    0.245,
+    0.67,
+    0.995,
+    1.145,
+    1.32,
+    2.426,
+    3.001,
+    3.301,
+    3.551,
+    4.701,
+    4.926,
+    5.326,
+    5.701,
+    5.901,
+    7.127,
+    7.352,
+    7.752,
+    8.252
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "ən fˈeː zˈɪt ɔp də dˈøːr. | nˈunu zˈi tə fˈeː. | də fˈeː pˈɑkt ən rˈoːs. | də fˈeː kˈøst nˈunu.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.39,
+   "telefoon_db": -18.1
+  },
+  "7": {
+   "pad": "blad/7.mp3",
+   "duur": 9.568,
+   "tekst": "papa zit op de fiets. een mier zit op het wiel. papa ziet de mier. de mier zit op papa.",
+   "woorden": [
+    "papa",
+    "zit",
+    "op",
+    "de",
+    "fiets",
+    "een",
+    "mier",
+    "zit",
+    "op",
+    "het",
+    "wiel",
+    "papa",
+    "ziet",
+    "de",
+    "mier",
+    "de",
+    "mier",
+    "zit",
+    "op",
+    "papa"
+   ],
+   "tijden": [
+    0.0,
+    0.702,
+    1.027,
+    1.177,
+    1.377,
+    2.64,
+    2.865,
+    3.34,
+    3.69,
+    3.815,
+    4.065,
+    5.129,
+    5.854,
+    6.154,
+    6.404,
+    7.608,
+    7.833,
+    8.308,
+    8.658,
+    8.808
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "pˈaːpaː zˈɪt ɔp də fˈits. | ən mˈir zˈɪt ɔp hət ʋˈil. | pˈaːpaː zˈi tə mˈir. | də mˈir zˈɪt ɔ pˈaːpaː.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.47,
+   "telefoon_db": -18.2
+  },
+  "8": {
+   "pad": "blad/8.mp3",
+   "duur": 8.971,
+   "tekst": "de slang ziet een ring. de slang zit in de ring. een pauw pakt de ring. de slang kust de pauw.",
+   "woorden": [
+    "de",
+    "slang",
+    "ziet",
+    "een",
+    "ring",
+    "de",
+    "slang",
+    "zit",
+    "in",
+    "de",
+    "ring",
+    "een",
+    "pauw",
+    "pakt",
+    "de",
+    "ring",
+    "de",
+    "slang",
+    "kust",
+    "de",
+    "pauw"
+   ],
+   "tijden": [
+    0.0,
+    0.213,
+    0.788,
+    1.113,
+    1.313,
+    2.336,
+    2.586,
+    3.136,
+    3.511,
+    3.636,
+    3.811,
+    4.884,
+    5.159,
+    5.559,
+    5.934,
+    6.159,
+    7.183,
+    7.433,
+    7.933,
+    8.308,
+    8.508
+   ],
+   "tijden_bron": [
+    "model",
+    "model",
+    "model",
+    "model"
+   ],
+   "fonemen": "də slˈɑŋ zˈit ən rˈɪŋ. | də slˈɑŋ zˈɪt ɪn də rˈɪŋ. | ən pˈʌʊ pˈɑk tə rˈɪŋ. | də slˈɑŋ kˈøs tə pˈʌʊ.",
+   "snelheid": 0.68,
+   "pauze_s": 0.6,
+   "boven400": 0.49,
+   "telefoon_db": -18.1
   }
  }
 }
