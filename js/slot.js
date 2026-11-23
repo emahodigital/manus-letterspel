@@ -287,7 +287,7 @@
     try {
       meetDoek = meetDoek || document.createElement('canvas').getContext('2d');
       meetDoek.font = '700 ' + LETTER + 'px Andika, system-ui, sans-serif';
-      var b = meetDoek.measureText(veld.value.toLowerCase()).width * 1.03, ruimte = veld.clientWidth - 30;
+      var b = meetDoek.measureText(veld.value).width * 1.03, ruimte = veld.clientWidth - 30;
       if (b > ruimte && ruimte > 0) px = Math.max(15, Math.floor(LETTER * ruimte / b));
     } catch (e) { px = LETTER; }
     veld.style.fontSize = px + 'px';
@@ -299,7 +299,9 @@
     if (!wortel) return;
     wortel.classList.toggle('bezig', !!aan);
     var dicht = !!aan || wachtNog() > 0;
-    veld.disabled = dicht; knop.disabled = dicht;
+    // Het veld gaat alleen dicht tijdens het wachten na 5 missers. Tijdens het rekenen blijft het open:
+    // op een iPhone verdwijnt anders het toetsenbord en komt het na een verkeerde code niet meer terug.
+    veld.disabled = wachtNog() > 0; knop.disabled = dicht;
   }
   function telAf() {
     clearInterval(wachtTimer);
@@ -312,6 +314,17 @@
       clearInterval(wachtTimer); zeg(''); zetBezig(false);
       if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) { try { veld.focus(); veld.select(); } catch (e) { /* stil */ } }
     }, 250);
+  }
+  // Na een verkeerde code: de tekst staat geselecteerd, zodat opnieuw typen hem vervangt. Op een telefoon nooit zelf
+  // de focus zetten (iOS toont dan geen toetsenbord en een tik op het veld doet daarna niets meer): staat het veld
+  // nog aan, dan blijft het toetsenbord staan; is het toetsenbord weg, dan haalt de eerstvolgende tik het terug.
+  var tikHerstel = false;
+  function naMis() {
+    var fijn = !!(window.matchMedia && window.matchMedia('(pointer: fine)').matches);
+    try {
+      if (fijn) { veld.focus(); veld.select(); }
+      else if (document.activeElement === veld) { veld.setSelectionRange(0, veld.value.length); tikHerstel = true; }
+    } catch (e) { /* stil */ }
   }
   function schud() {
     paneel.classList.remove('schud'); void paneel.offsetWidth; paneel.classList.add('schud');
@@ -332,7 +345,7 @@
           if (m.n % MAX_MIS === 0) m.tot = Date.now() + WACHT_SEC * 1000;
           lsZet(MIS, JSON.stringify(m));
           schud();
-          if (wachtNog() > 0) telAf(); else { zeg(TEKST.fout); try { veld.focus(); veld.select(); } catch (e) { /* stil */ } }
+          if (wachtNog() > 0) telAf(); else { zeg(TEKST.fout); naMis(); }
         } else zeg(uit === 'kan-niet' ? TEKST.kanNiet : TEKST.net);
       }, function () { zetBezig(false); zeg(TEKST.net); });
     }, 60);
@@ -351,6 +364,7 @@
     veld.setAttribute('autocomplete', 'off'); veld.setAttribute('spellcheck', 'false'); veld.setAttribute('inputmode', 'text');
     veld.setAttribute('enterkeyhint', 'go'); veld.maxLength = 80;
     knop = el('button', 'slot-knop'); knop.type = 'submit'; knop.setAttribute('aria-label', 'Open het spel'); knop.innerHTML = PIJL;
+    knop.addEventListener('mousedown', function (e) { e.preventDefault(); });      // een tik op de knop haalt het toetsenbord niet weg
     melding = el('p', 'slot-melding'); melding.setAttribute('aria-live', 'polite');
     var nunu = el('img', 'slot-nunu'); nunu.alt = ''; nunu.src = 'art/figuur/nunu_sleep.png'; nunu.onerror = function () { nunu.style.display = 'none'; };
     paneel.appendChild(veld); paneel.appendChild(knop); paneel.appendChild(el('p', 'slot-tekst', TEKST.uitleg)); paneel.appendChild(melding);
@@ -359,6 +373,12 @@
     paneel.addEventListener('submit', function (e) { e.preventDefault(); verstuur(); });
     veld.addEventListener('input', function () { pasLetter(); if (Slot.staat === 'slot' && !wachtNog()) zeg(''); });
     var grof = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    // vangnet voor de iPhone: staat het veld nog 'aan' zonder toetsenbord, dan zet een tik het in dezelfde aanraking uit en weer aan
+    veld.addEventListener('touchend', function () {
+      if (!tikHerstel || veld.disabled) return;
+      tikHerstel = false;
+      if (document.activeElement === veld) { try { veld.blur(); veld.focus(); } catch (e) { /* stil */ } }
+    });
     veld.addEventListener('focus', function () { if (grof && wortel) wortel.classList.add('typt'); });
     veld.addEventListener('blur', function () { if (wortel) wortel.classList.remove('typt'); });
     // het spel eronder krijgt niets mee van wat hier gebeurt
