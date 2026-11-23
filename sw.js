@@ -10,7 +10,7 @@
 'use strict';
 
 /* --- gegenereerd door tools/maak-cachelijst.py: niet met de hand wijzigen --- */
-const VERSIE = '2026-11-23-39aefbacf6';
+const VERSIE = '2026-11-23-4c3cbeb09e';
 const BESTANDEN = [
   "index.html",
   "css/ouders.css",
@@ -501,20 +501,40 @@ function sleutel(url) {
   return u.href === BASIS ? BASIS + 'index.html' : u.href;
 }
 
+// Een lijst bestanden ophalen en in de cache zetten, 6 tegelijk.
+// Elk bestand apart: één ontbrekend plaatje mag de hele installatie niet tegenhouden.
+function haalBinnen(cache, lijst) {
+  let i = 0;
+  function volgende() {
+    if (i >= lijst.length) return Promise.resolve();
+    const pad = lijst[i++], url = BASIS + pad;
+    return fetch(new Request(url, { cache: 'reload' })).then(function (r) {
+      if (r.ok && !r.redirected) return cache.put(url, r);
+      // een geweigerd antwoord (storing, te druk) netjes afsluiten: een antwoord dat niemand leest houdt de verbinding
+      // bezet, en na 6 van zulke antwoorden stond de hele installatie stil
+      try { if (r.body) r.body.cancel(); } catch (e) { /* stil */ }
+    }).catch(function () { /* blijft over voor de volgende keer */ }).then(volgende);
+  }
+  const banen = []; for (let b = 0; b < 6; b++) banen.push(volgende());
+  return Promise.all(banen);
+}
+// Wat bij het installeren niet binnenkwam (een haperende verbinding) alsnog ophalen. Het spel vraagt hierom bij het
+// openen (js/bewaar.js). Is alles er al, dan gaat er geen enkel verzoek de deur uit.
+let vultAan = null;
+function vulAan() {
+  if (vultAan) return vultAan;
+  vultAan = caches.open(CACHE).then(function (cache) {
+    return cache.keys().then(function (heeft) {
+      const er = {}; heeft.forEach(function (r) { er[r.url] = 1; });
+      const mist = BESTANDEN.filter(function (pad) { return !er[BASIS + pad]; });
+      return mist.length ? haalBinnen(cache, mist) : null;
+    });
+  }).catch(function () { /* stil */ }).then(function () { vultAan = null; });
+  return vultAan;
+}
+
 self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (cache) {
-    // elk bestand apart: één ontbrekend plaatje mag de hele installatie niet tegenhouden
-    let i = 0;
-    function volgende() {
-      if (i >= BESTANDEN.length) return Promise.resolve();
-      const pad = BESTANDEN[i++], url = BASIS + pad;
-      return fetch(new Request(url, { cache: 'reload' })).then(function (r) {
-        if (r.ok && !r.redirected) return cache.put(url, r);
-      }).catch(function () { /* blijft over voor de volgende keer */ }).then(volgende);
-    }
-    const banen = []; for (let b = 0; b < 6; b++) banen.push(volgende());
-    return Promise.all(banen);
-  }));
+  e.waitUntil(caches.open(CACHE).then(function (cache) { return haalBinnen(cache, BESTANDEN); }));
 });
 
 self.addEventListener('activate', function (e) {
@@ -526,7 +546,8 @@ self.addEventListener('activate', function (e) {
 // het spel zegt wanneer de nieuwe versie het over mag nemen (op het startscherm)
 self.addEventListener('message', function (e) {
   if (e.data === 'neem-over') self.skipWaiting();
-  else if (e.data === 'versie' && e.source) e.source.postMessage({ versie: VERSIE, bestanden: BESTANDEN.length });
+  else if (e.data === 'vul-aan') e.waitUntil(vulAan());
+  else if (e.data === 'versie') { const naar = e.ports && e.ports[0] ? e.ports[0] : e.source; if (naar) naar.postMessage({ versie: VERSIE, bestanden: BESTANDEN.length }); }
 });
 
 function ververs(cache, url) {
