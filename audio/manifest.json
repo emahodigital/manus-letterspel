@@ -3789,6 +3789,110 @@
    "telefoon_db": -18.1,
    "tekst": "Voor wie is de kaart?",
    "fonemen": "vɔːr ʋˈi ɪs də kˈaːrt?"
+  },
+  "mem_hoe": {
+   "pad": "zin/mem_hoe.mp3",
+   "duur": 1.178,
+   "boven400": 0.4,
+   "telefoon_db": -18.0,
+   "tekst": "Hoe wil je spelen?",
+   "fonemen": "hˈu ʋɪl jə spˈeːlən?"
+  },
+  "mem_wie": {
+   "pad": "zin/mem_wie.mp3",
+   "duur": 1.543,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "tekst": "Met wie wil je spelen?",
+   "fonemen": "mɛt ʋˈi ʋɪl jə spˈeːlən?"
+  },
+  "mem_wie2": {
+   "pad": "zin/mem_wie2.mp3",
+   "duur": 0.967,
+   "boven400": 0.32,
+   "telefoon_db": -18.1,
+   "tekst": "En wie ben jij?",
+   "fonemen": "ɛn ʋˈi bɛn jɛɪ?"
+  },
+  "mem_draai": {
+   "pad": "zin/mem_draai.mp3",
+   "duur": 1.178,
+   "boven400": 0.54,
+   "telefoon_db": -18.1,
+   "tekst": "Draai er twee om.",
+   "fonemen": "drˈaːj ər tʋˈeː ˈɔm."
+  },
+  "mem_jij": {
+   "pad": "zin/mem_jij.mp3",
+   "duur": 0.678,
+   "boven400": 0.35,
+   "telefoon_db": -18.1,
+   "tekst": "Nu jij!",
+   "fonemen": "nˈy jɛɪ!"
+  },
+  "mem_bij": {
+   "pad": "zin/mem_bij.mp3",
+   "duur": 1.296,
+   "boven400": 0.48,
+   "telefoon_db": -18.1,
+   "tekst": "Die horen bij elkaar.",
+   "fonemen": "di hˈoːrən bɛɪ ˈɛlkaːr."
+  },
+  "mem_vooraan": {
+   "pad": "zin/mem_vooraan.mp3",
+   "duur": 1.199,
+   "boven400": 0.52,
+   "telefoon_db": -18.0,
+   "tekst": "Wat hoor je vooraan?",
+   "fonemen": "ʋɑt hˈoːr jə vˈɔːrˌaːn?"
+  },
+  "mem_zelfde": {
+   "pad": "zin/mem_zelfde.mp3",
+   "duur": 1.553,
+   "boven400": 0.49,
+   "telefoon_db": -18.1,
+   "tekst": "Welke beginnen hetzelfde?",
+   "fonemen": "ʋˈɛlkə bəɣˈɪnən hˈɛtzɛlvdə?"
+  },
+  "mem_lees": {
+   "pad": "zin/mem_lees.mp3",
+   "duur": 1.286,
+   "boven400": 0.54,
+   "telefoon_db": -18.1,
+   "tekst": "Lees maar wat er staat.",
+   "fonemen": "lˈeːs maːr ʋɑt ər stˈaːt."
+  },
+  "mem_woorden": {
+   "pad": "zin/mem_woorden.mp3",
+   "duur": 1.413,
+   "boven400": 0.58,
+   "telefoon_db": -18.1,
+   "tekst": "Dit zat er allemaal in.",
+   "fonemen": "dɪt zˈɑt ər ˌɑləmˈaːl ˈɪn."
+  },
+  "lab_start": {
+   "pad": "zin/lab_start.mp3",
+   "duur": 2.921,
+   "boven400": 0.49,
+   "telefoon_db": -18.1,
+   "tekst": "Zoek de letters van het woord. Dan gaat de poort open.",
+   "fonemen": "zˈuk də lˈɛtərs vɑn hət ʋˈɔːrt. dˈɑn ɣˈaː tə pˈɔːrt ˈoːpən."
+  },
+  "lab_uit": {
+   "pad": "zin/lab_uit.mp3",
+   "duur": 2.361,
+   "boven400": 0.48,
+   "telefoon_db": -18.1,
+   "tekst": "De poort is open. Loop maar naar buiten!",
+   "fonemen": "də pˈɔːrt ɪs ˈoːpən. lˈoːp maːr naːr bˈœytən!"
+  },
+  "lab_horen": {
+   "pad": "zin/lab_horen.mp3",
+   "duur": 2.607,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "tekst": "Nu zonder vakjes. Luister goed naar het woord.",
+   "fonemen": "nˈy zˈɔndər vˈɑkjəs. lˈœystər ɣˈut naːr hət ʋˈɔːrt."
   }
  },
  "zinwoord": {

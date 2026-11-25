@@ -10,7 +10,7 @@
 'use strict';
 
 /* --- gegenereerd door tools/maak-cachelijst.py: niet met de hand wijzigen --- */
-const VERSIE = '2026-11-23-0393ab2b2e';
+const VERSIE = '2026-11-25-12f89a9385';
 const BESTANDEN = [
   "index.html",
   "css/ouders.css",
@@ -462,8 +462,21 @@ const BESTANDEN = [
   "audio/zin/kiam.mp3",
   "audio/zin/kijk_letter.mp3",
   "audio/zin/komt_spelen.mp3",
+  "audio/zin/lab_horen.mp3",
+  "audio/zin/lab_start.mp3",
+  "audio/zin/lab_uit.mp3",
   "audio/zin/lees_mee.mp3",
   "audio/zin/luister.mp3",
+  "audio/zin/mem_bij.mp3",
+  "audio/zin/mem_draai.mp3",
+  "audio/zin/mem_hoe.mp3",
+  "audio/zin/mem_jij.mp3",
+  "audio/zin/mem_lees.mp3",
+  "audio/zin/mem_vooraan.mp3",
+  "audio/zin/mem_wie.mp3",
+  "audio/zin/mem_wie2.mp3",
+  "audio/zin/mem_woorden.mp3",
+  "audio/zin/mem_zelfde.mp3",
   "audio/zin/pak_deze.mp3",
   "audio/zin/plant.mp3",
   "audio/zin/post.mp3",
