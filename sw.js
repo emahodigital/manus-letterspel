@@ -10,7 +10,7 @@
 'use strict';
 
 /* --- gegenereerd door tools/maak-cachelijst.py: niet met de hand wijzigen --- */
-const VERSIE = '2026-11-25-12f89a9385';
+const VERSIE = '2026-11-25-8512447d65';
 const BESTANDEN = [
   "index.html",
   "css/ouders.css",
@@ -514,46 +514,134 @@ function sleutel(url) {
   return u.href === BASIS ? BASIS + 'index.html' : u.href;
 }
 
+// Wat er eerst moet zijn voordat een nieuwe versie het over mag nemen: alles behalve geluid en plaatjes (samen zo'n
+// 19 van de 25 MB). Die komen daarna op de achtergrond (vulAan). Zo is een nieuwe versie in een paar tellen klaar in
+// plaats van na het ophalen van alles, en breekt een telefoon die de app snel weer sluit de installatie niet steeds af.
+const LATER = /^(audio|art)\//;
+const KERN = BESTANDEN.filter(function (pad) { return !LATER.test(pad); });
+
+// Een bestand zoeken in de caches van vorige versies (om te hergebruiken wat niet veranderd is).
+function uitOud(url) {
+  return caches.keys().then(function (namen) {
+    namen = namen.filter(function (n) { return n.indexOf(VOORVOEGSEL) === 0 && n !== CACHE; }).sort().reverse();   // nieuwste eerst
+    let i = 0;
+    function volgende() {
+      if (i >= namen.length) return null;
+      return caches.open(namen[i++]).then(function (c) { return c.match(url); }).then(function (hit) { return hit || volgende(); });
+    }
+    return volgende();
+  }).catch(function () { return null; });
+}
+
+// Een bestand uit de caches van vorige versies halen (het staat nu in deze versie): zo groeit de opslag op de telefoon
+// niet tot twee keer het spel, wat op een iPhone de grens kan raken.
+function wisOud(url) {
+  return caches.keys().then(function (namen) {
+    return Promise.all(namen.filter(function (n) { return n.indexOf(VOORVOEGSEL) === 0 && n !== CACHE; }).map(function (n) {
+      return caches.open(n).then(function (c) { return c.delete(url); });
+    }));
+  }).catch(function () { /* stil */ });
+}
+// Geluid en plaatjes die in meer dan één oude cache staan (een eerdere installatie die niet afkwam) maar één keer bewaren.
+function ontdubbel() {
+  return caches.keys().then(function (namen) {
+    namen = namen.filter(function (n) { return n.indexOf(VOORVOEGSEL) === 0 && n !== CACHE; }).sort().reverse();
+    const gezien = {};
+    let keten = Promise.resolve();
+    namen.forEach(function (n) {
+      keten = keten.then(function () { return caches.open(n); }).then(function (c) {
+        return c.keys().then(function (lijst) {
+          return Promise.all(lijst.map(function (r) {
+            const pad = r.url.indexOf(BASIS) === 0 ? r.url.slice(BASIS.length) : '';
+            if (!LATER.test(pad)) return null;
+            if (gezien[r.url]) return c.delete(r);
+            gezien[r.url] = 1; return null;
+          }));
+        });
+      });
+    });
+    return keten;
+  }).catch(function () { /* stil */ });
+}
+
+// Een verzoek dat niet eeuwig mag blijven hangen (een baan die stilvalt hield anders de hele installatie tegen).
+function haal(url, kop) {
+  let ctl = null, klok = null;
+  try { ctl = new AbortController(); klok = setTimeout(function () { try { ctl.abort(); } catch (e) { /* stil */ } }, 45000); } catch (e) { ctl = null; }
+  const opties = { cache: kop ? 'no-store' : 'reload' };
+  if (kop) opties.headers = kop;
+  if (ctl) opties.signal = ctl.signal;
+  return fetch(new Request(url, opties)).then(function (r) { if (klok) clearTimeout(klok); return r; }, function (e) { if (klok) clearTimeout(klok); throw e; });
+}
+
 // Een lijst bestanden ophalen en in de cache zetten, 6 tegelijk.
 // Elk bestand apart: één ontbrekend plaatje mag de hele installatie niet tegenhouden.
-function haalBinnen(cache, lijst) {
+// Staat het bestand nog in de cache van een vorige versie, dan vraagt hij de server alleen of het veranderd is
+// (If-None-Match); is het gelijk gebleven, dan wordt het overgenomen zonder het opnieuw op te halen.
+function haalBinnen(cache, lijst, verhuis) {
   let i = 0;
-  function volgende() {
-    if (i >= lijst.length) return Promise.resolve();
-    const pad = lijst[i++], url = BASIS + pad;
-    return fetch(new Request(url, { cache: 'reload' })).then(function (r) {
-      if (r.ok && !r.redirected) return cache.put(url, r);
+  function klaar(url) { return verhuis ? wisOud(url) : null; }
+  function nieuw(url) {
+    return haal(url, null).then(function (r) {
+      if (r.ok && !r.redirected) return cache.put(url, r).then(function () { return klaar(url); });
       // een geweigerd antwoord (storing, te druk) netjes afsluiten: een antwoord dat niemand leest houdt de verbinding
       // bezet, en na 6 van zulke antwoorden stond de hele installatie stil
       try { if (r.body) r.body.cancel(); } catch (e) { /* stil */ }
+    });
+  }
+  function volgende() {
+    if (i >= lijst.length) return Promise.resolve();
+    const pad = lijst[i++], url = BASIS + pad;
+    return uitOud(url).then(function (oud) {
+      const merk = oud && oud.ok && oud.headers ? oud.headers.get('etag') : null;
+      if (!merk) return nieuw(url);
+      return haal(url, { 'If-None-Match': merk }).then(function (r) {
+        if (r.status === 304) return cache.put(url, oud).then(function () { return klaar(url); });
+        if (r.ok && !r.redirected) return cache.put(url, r).then(function () { return klaar(url); });
+        try { if (r.body) r.body.cancel(); } catch (e) { /* stil */ }
+      });
     }).catch(function () { /* blijft over voor de volgende keer */ }).then(volgende);
   }
   const banen = []; for (let b = 0; b < 6; b++) banen.push(volgende());
   return Promise.all(banen);
 }
-// Wat bij het installeren niet binnenkwam (een haperende verbinding) alsnog ophalen. Het spel vraagt hierom bij het
-// openen (js/bewaar.js). Is alles er al, dan gaat er geen enkel verzoek de deur uit.
+// De caches van vorige versies weggooien, maar pas als deze versie alles heeft: tot dan zijn ze de bron voor wat niet
+// veranderd is en de terugval zonder internet.
+function ruimOp(cache) {
+  return cache.keys().then(function (heeft) {
+    const er = {}; heeft.forEach(function (r) { er[r.url] = 1; });
+    if (BESTANDEN.some(function (pad) { return !er[BASIS + pad]; })) return null;
+    return caches.keys().then(function (namen) {
+      return Promise.all(namen.filter(function (n) { return n.indexOf(VOORVOEGSEL) === 0 && n !== CACHE; }).map(function (n) { return caches.delete(n); }));
+    });
+  });
+}
+// Wat nog niet binnen is (geluid en plaatjes na een nieuwe versie, of een haperende verbinding) alsnog ophalen. Het spel
+// vraagt hierom bij het openen (js/bewaar.js) en de nieuwe versie doet het zelf zodra hij het overneemt. Is alles er al,
+// dan gaat er geen enkel verzoek de deur uit.
 let vultAan = null;
 function vulAan() {
   if (vultAan) return vultAan;
   vultAan = caches.open(CACHE).then(function (cache) {
-    return cache.keys().then(function (heeft) {
-      const er = {}; heeft.forEach(function (r) { er[r.url] = 1; });
-      const mist = BESTANDEN.filter(function (pad) { return !er[BASIS + pad]; });
-      return mist.length ? haalBinnen(cache, mist) : null;
-    });
+    function ronde() {
+      return cache.keys().then(function (heeft) {
+        const er = {}; heeft.forEach(function (r) { er[r.url] = 1; });
+        const mist = BESTANDEN.filter(function (pad) { return !er[BASIS + pad]; });
+        return mist.length ? haalBinnen(cache, mist, true).then(function () { return mist.length; }) : 0;
+      });
+    }
+    // een tweede ronde voor wat de eerste keer haperde (een verbinding die wegviel)
+    return ronde().then(function (n) { return n ? ronde() : 0; }).then(function () { return ruimOp(cache); });
   }).catch(function () { /* stil */ }).then(function () { vultAan = null; });
   return vultAan;
 }
 
 self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (cache) { return haalBinnen(cache, BESTANDEN); }));
+  e.waitUntil(ontdubbel().then(function () { return caches.open(CACHE); }).then(function (cache) { return haalBinnen(cache, KERN, false); }));
 });
 
 self.addEventListener('activate', function (e) {
-  e.waitUntil(caches.keys().then(function (namen) {
-    return Promise.all(namen.filter(function (n) { return n.indexOf(VOORVOEGSEL) === 0 && n !== CACHE; }).map(function (n) { return caches.delete(n); }));
-  }).then(function () { return self.clients.claim(); }));
+  e.waitUntil(self.clients.claim().then(function () { vulAan(); }));
 });
 
 // het spel zegt wanneer de nieuwe versie het over mag nemen (op het startscherm)
@@ -582,8 +670,12 @@ self.addEventListener('fetch', function (e) {
         if (r.ok && !r.redirected && r.type === 'basic') cache.put(url, r.clone());
         return r;
       }).catch(function () {
-        if (req.mode === 'navigate') return cache.match(BASIS + 'index.html').then(function (i) { return i || new Response('Geen internet', { status: 503 }); });
-        return new Response('', { status: 504, statusText: 'geen internet' });
+        // geen internet: misschien staat het nog in de cache van de vorige versie (geluid en plaatjes vlak na een nieuwe versie)
+        return uitOud(url).then(function (oud) {
+          if (oud) return oud;
+          if (req.mode === 'navigate') return cache.match(BASIS + 'index.html').then(function (i) { return i || new Response('Geen internet', { status: 503 }); });
+          return new Response('', { status: 504, statusText: 'geen internet' });
+        });
       });
     });
   }));
