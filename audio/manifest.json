@@ -3893,6 +3893,174 @@
    "telefoon_db": -18.1,
    "tekst": "Nu zonder vakjes. Luister goed naar het woord.",
    "fonemen": "nˈy zˈɔndər vˈɑkjəs. lˈœystər ɣˈut naːr hət ʋˈɔːrt."
+  },
+  "spel_woordslang": {
+   "pad": "zin/spel_woordslang.mp3",
+   "duur": 0.816,
+   "boven400": 0.54,
+   "telefoon_db": -18.0,
+   "tekst": "Woordslang",
+   "fonemen": "ʋˈɔːrdslɑŋ"
+  },
+  "spel_leesslang": {
+   "pad": "zin/spel_leesslang.mp3",
+   "duur": 0.758,
+   "boven400": 0.52,
+   "telefoon_db": -18.1,
+   "tekst": "Leesslang",
+   "fonemen": "lˈeːslɑŋ"
+  },
+  "spel_lettervangst": {
+   "pad": "zin/spel_lettervangst.mp3",
+   "duur": 0.914,
+   "boven400": 0.54,
+   "telefoon_db": -18.1,
+   "tekst": "Lettervangst",
+   "fonemen": "lˈɛtərvˌɑŋst"
+  },
+  "spel_raadsels": {
+   "pad": "zin/spel_raadsels.mp3",
+   "duur": 1.281,
+   "boven400": 0.4,
+   "telefoon_db": -18.2,
+   "tekst": "Nunu's raadsels",
+   "fonemen": "nˈunus rˈaːdsəls"
+  },
+  "spel_vrij": {
+   "pad": "zin/spel_vrij.mp3",
+   "duur": 0.991,
+   "boven400": 0.57,
+   "telefoon_db": -18.1,
+   "tekst": "Vrij slangen",
+   "fonemen": "vrˈɛɪ slˈɑŋən"
+  },
+  "spel_legowoord": {
+   "pad": "zin/spel_legowoord.mp3",
+   "duur": 0.894,
+   "boven400": 0.49,
+   "telefoon_db": -18.0,
+   "tekst": "Legowoord",
+   "fonemen": "lˈeːɣoːʋˌɔːrt"
+  },
+  "spel_klimboom": {
+   "pad": "zin/spel_klimboom.mp3",
+   "duur": 0.789,
+   "boven400": 0.41,
+   "telefoon_db": -18.1,
+   "tekst": "Klimboom",
+   "fonemen": "klɪmbˈoːm"
+  },
+  "spel_omdebeurt": {
+   "pad": "zin/spel_omdebeurt.mp3",
+   "duur": 0.826,
+   "boven400": 0.41,
+   "telefoon_db": -18.0,
+   "tekst": "Om de beurt",
+   "fonemen": "ɔm də bˈøːrt"
+  },
+  "spel_brievenbus": {
+   "pad": "zin/spel_brievenbus.mp3",
+   "duur": 0.915,
+   "boven400": 0.33,
+   "telefoon_db": -18.1,
+   "tekst": "Brievenbus",
+   "fonemen": "brˈivənbˌøs"
+  },
+  "spel_bultenbaan": {
+   "pad": "zin/spel_bultenbaan.mp3",
+   "duur": 0.932,
+   "boven400": 0.44,
+   "telefoon_db": -18.0,
+   "tekst": "Bultenbaan",
+   "fonemen": "bˈøltənbˌaːn"
+  },
+  "spel_verfletters": {
+   "pad": "zin/spel_verfletters.mp3",
+   "duur": 0.922,
+   "boven400": 0.5,
+   "telefoon_db": -18.1,
+   "tekst": "Verfletters",
+   "fonemen": "vərflˈɛtərs"
+  },
+  "spel_gekkezinnen": {
+   "pad": "zin/spel_gekkezinnen.mp3",
+   "duur": 0.988,
+   "boven400": 0.39,
+   "telefoon_db": -18.1,
+   "tekst": "Gekke zinnen",
+   "fonemen": "ɣˈɛkə zˈɪnən"
+  },
+  "spel_voorleesboek": {
+   "pad": "zin/spel_voorleesboek.mp3",
+   "duur": 0.973,
+   "boven400": 0.47,
+   "telefoon_db": -18.0,
+   "tekst": "Voorleesboek",
+   "fonemen": "vˈɔːrleːzbˌuk"
+  },
+  "spel_labyrint": {
+   "pad": "zin/spel_labyrint.mp3",
+   "duur": 0.888,
+   "boven400": 0.51,
+   "telefoon_db": -18.3,
+   "tekst": "Labyrint",
+   "fonemen": "lˈaːbirˌɪnt"
+  },
+  "spel_memory": {
+   "pad": "zin/spel_memory.mp3",
+   "duur": 0.929,
+   "boven400": 0.44,
+   "telefoon_db": -18.1,
+   "tekst": "Klankmemory",
+   "fonemen": "klˈɑŋkməmˌoːri"
+  },
+  "spel_zwemmen": {
+   "pad": "zin/spel_zwemmen.mp3",
+   "duur": 0.618,
+   "boven400": 0.35,
+   "telefoon_db": -18.2,
+   "tekst": "Zwemmen",
+   "fonemen": "zʋˈɛmən"
+  },
+  "zwem_start": {
+   "pad": "zin/zwem_start.mp3",
+   "duur": 2.262,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "tekst": "Neem een aanloop en spring in het water!",
+   "fonemen": "nˈeːm ən ˈaːnlˌoːp ɛn sprˈɪŋ ɪn hət ʋˈaːtər!"
+  },
+  "zwem_bellen": {
+   "pad": "zin/zwem_bellen.mp3",
+   "duur": 2.384,
+   "boven400": 0.48,
+   "telefoon_db": -18.1,
+   "tekst": "Zwem door de bellen. Luister wat ze zeggen.",
+   "fonemen": "zʋˈɛm doːr də bˈɛlən. lˈœystər ʋɑt zə zˈɛɣən."
+  },
+  "zwem_vis": {
+   "pad": "zin/zwem_vis.mp3",
+   "duur": 1.591,
+   "boven400": 0.53,
+   "telefoon_db": -18.1,
+   "tekst": "Welke vis hoort bij het woord?",
+   "fonemen": "ʋˈɛlkə vˈɪs hˈɔːrt bɛɪ hət ʋˈɔːrt?"
+  },
+  "zwem_snel": {
+   "pad": "zin/zwem_snel.mp3",
+   "duur": 2.873,
+   "boven400": 0.46,
+   "telefoon_db": -18.2,
+   "tekst": "Zwem eens sneller. Dan plakken de klanken aan elkaar.",
+   "fonemen": "zʋˈɛm ˈeːn snˈɛlər. dˈɑn plˈɑkən də klˈɑŋkən aːn ˈɛlkaːr."
+  },
+  "zwem_horen": {
+   "pad": "zin/zwem_horen.mp3",
+   "duur": 2.652,
+   "boven400": 0.42,
+   "telefoon_db": -18.1,
+   "tekst": "Nu zonder letters. Luister goed naar de bellen.",
+   "fonemen": "nˈy zˈɔndər lˈɛtərs. lˈœystər ɣˈut naːr də bˈɛlən."
   }
  },
  "zinwoord": {

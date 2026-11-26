@@ -5,9 +5,17 @@
      bestand: geheim.bin (AES-256-GCM). De sleutel wordt uit de gezinscode gemaakt met PBKDF2-SHA256 (het aantal rondes
      en het zout staan vooraan in het bestand). De code zelf staat nergens in het spel. Zie tools/maak-geheim.py.
    - Dit bestand is het enige script dat index.html meteen laadt. Zonder code start er niets: geen spel, geen geluid, geen ouderscherm.
-     In de publieke versie (tools/bouw-publiek.py) zit ook de spelcode zelf in het pakket: op de site staat geen enkel
+     In de publieke versie (tools/bouw-publiek.py) zit ook de spelcode zelf versleuteld op de site: daar staat geen enkel
      spelscript. In de ontwikkelmap staan de scripts als gewone regels in <template id="spel"> en laadt dit bestand ze
      pas als het pakket open is.
+   - De publieke versie heeft 3 pakketten met dezelfde sleutel: geheim.bin (de basis: namen, online bewaren, en `delen`:
+     waar de andere staan), stem.bin (de vaste opnames) en code.bin (de spelcode, ingepakt met zlib). Een nieuwe versie
+     van het spel vervangt zo alleen code.bin. Tot en met versie 1.4 zat alles in één geheim.bin; die vorm leest dit
+     bestand nog steeds (de ontwikkelmap, en een toestel dat nog de cache van de vorige versie heeft).
+   - Een nieuwe versie (LS.Slot.bij, onderaan): bij het openen kijkt dit bestand meteen of er een nieuwe versie is. Zo
+     ja, dan wacht het met een rustig balkje tot die binnen is, laat haar het overnemen en laadt één keer opnieuw,
+     nog vóór het spel begint. Duurt het te lang, dan start het spel gewoon en neemt de nieuwe versie het later over,
+     op een rustig moment (js/bewaar.js zegt wanneer; op het slot: als niemand typt).
    - Na de juiste code onthoudt het toestel de sleutel (niet de code) in localStorage en in IndexedDB, en vraagt het
      de browser om die opslag te bewaren. Daarna komt de vraag niet meer terug.
    - Een link met #code=... ontgrendelt ook. De code verdwijnt daarna meteen uit de adresbalk.
@@ -21,6 +29,8 @@
      LS.Slot.aantal    hoeveel vaste opnames er in het spel zitten
      LS.Slot.klaar     belofte die vervuld wordt zodra het slot open is
      LS.Slot.bron      'pakket' (spelcode uit het pakket) of 'map' (losse scripts, ontwikkelversie)
+     LS.Slot.bij       een nieuwe versie van het spel: { staat: '' | 'haalt' | 'klaar' | 'neemt', deel (0 tot 1), kijk(),
+                       neemOver(), volg(reg), rustig (functie van js/bewaar.js: mag het spel nu herladen?) }
      LS.Slot.kluis()   voor js/wolk.js (online bewaren), één keer op te halen: belofte met de gezinssleutel als sleutel die
                        de browser niet meer uitleest, en het deel `wolk` uit het pakket ({ repo, token, tak }). Zit dat deel
                        niet in het pakket, dan komt er null en staat online bewaren uit. Het toegangsbewijs staat alleen
@@ -123,15 +133,18 @@
   }
 
   /* ---------- het pakket ophalen en openmaken ---------- */
-  function haalPakket() {
-    if (pakketBelofte) return pakketBelofte;
-    var b = fetch(PAKKET).then(function (r) {
+  function haalBestand(pad) {
+    return fetch(pad).then(function (r) {
       if (!r || !r.ok) throw new Error('weg');
       return r.arrayBuffer();
     }).then(function (buf) {
       if (buf.byteLength < KOP + 16 || new Uint8Array(buf, 0, 1)[0] !== 1) throw new Error('vorm');
       return buf;
     });
+  }
+  function haalPakket() {
+    if (pakketBelofte) return pakketBelofte;
+    var b = haalBestand(PAKKET);
     pakketBelofte = b;
     b.catch(function () { if (pakketBelofte === b) pakketBelofte = null; });      // de volgende keer opnieuw proberen
     return b;
@@ -143,15 +156,116 @@
       return S.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: zout, iterations: rondes }, basis, 256);
     }).then(function (bits) { return new Uint8Array(bits); });
   }
-  function ontsleutel(buf, ruw) {
+  function ontsleutel(buf, ruw, soort) {
     var S = window.crypto.subtle, u8 = new Uint8Array(buf);
     return S.importKey('raw', ruw, { name: 'AES-GCM' }, false, ['decrypt']).then(function (sleutel) {
       return S.decrypt({ name: 'AES-GCM', iv: u8.subarray(VAST_DEEL, KOP), additionalData: u8.subarray(0, VAST_DEEL), tagLength: 128 }, sleutel, u8.subarray(KOP));
     }).then(function (inhoud) {
       var n = new DataView(inhoud).getUint32(0), kop = JSON.parse(new TextDecoder('utf-8').decode(new Uint8Array(inhoud, 4, n)));
-      if (!kop || kop.soort !== 'letterspel-geheim') throw new Error('vorm');
+      if (!kop || kop.soort !== (soort || 'letterspel-geheim')) throw new Error('vorm');
       return { kop: kop, inhoud: inhoud, begin: 4 + n };
     });
+  }
+  /* zlib uitpakken (de spelcode in code.bin). De browser doet dat zelf als hij het kan (DecompressionStream, iPhone
+     vanaf iOS 16.4); anders het kleine uitpakkertje hieronder: gewone inflate, zonder controlesom (de versleuteling
+     heeft de inhoud al nagelopen). */
+  function blaasOp(src, ruim) {
+    var uit = new Uint8Array(ruim), ip = 2, op = 0, buf = 0, cnt = 0, laatste, soort, i, n, sym, len, d, dist, lb, db;
+    var LB = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258];
+    var LE = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0];
+    var DB = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577];
+    var DE = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13];
+    var VOLG = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15];
+    function bits(k) { while (cnt < k) { buf |= src[ip++] << cnt; cnt += 8; } var v = buf & ((1 << k) - 1); buf >>>= k; cnt -= k; return v; }
+    function boom(lengtes, van, aantal) {
+      var tel = new Uint16Array(16), symb = new Uint16Array(aantal), plek = new Uint16Array(16), j, s = 0;
+      for (j = 0; j < aantal; j++) tel[lengtes[van + j]]++;
+      tel[0] = 0;
+      for (j = 0; j < 16; j++) { plek[j] = s; s += tel[j]; }
+      for (j = 0; j < aantal; j++) if (lengtes[van + j]) symb[plek[lengtes[van + j]]++] = j;
+      return { tel: tel, symb: symb };
+    }
+    function lees(b) {
+      var som = 0, cur = 0, l = 0;
+      do { cur = 2 * cur + bits(1); l++; if (l > 15) throw new Error('inflate'); som += b.tel[l]; cur -= b.tel[l]; } while (cur >= 0);
+      return b.symb[som + cur];
+    }
+    do {
+      laatste = bits(1); soort = bits(2);
+      if (soort === 0) {                                             // een stuk zonder inpakken
+        buf = 0; cnt = 0; len = src[ip] | (src[ip + 1] << 8); ip += 4;
+        uit.set(src.subarray(ip, ip + len), op); op += len; ip += len;
+        continue;
+      }
+      if (soort === 3) throw new Error('inflate');
+      var lens = new Uint8Array(320), hlit = 288, hdist = 30;
+      if (soort === 1) {                                             // vaste bomen
+        for (i = 0; i < 144; i++) lens[i] = 8;
+        for (; i < 256; i++) lens[i] = 9;
+        for (; i < 280; i++) lens[i] = 7;
+        for (; i < 288; i++) lens[i] = 8;
+        for (; i < 318; i++) lens[i] = 5;
+      } else {                                                       // bomen uit het bestand
+        hlit = bits(5) + 257; hdist = bits(5) + 1; n = bits(4) + 4;
+        var cl = new Uint8Array(19);
+        for (i = 0; i < n; i++) cl[VOLG[i]] = bits(3);
+        var cb = boom(cl, 0, 19);
+        for (i = 0; i < hlit + hdist;) {
+          sym = lees(cb);
+          if (sym < 16) lens[i++] = sym;
+          else if (sym === 16) { d = lens[i - 1]; for (n = bits(2) + 3; n--;) lens[i++] = d; }
+          else i += sym === 17 ? bits(3) + 3 : bits(7) + 11;
+        }
+      }
+      lb = boom(lens, 0, hlit); db = boom(lens, hlit, hdist);
+      for (;;) {
+        sym = lees(lb);
+        if (sym < 256) uit[op++] = sym;
+        else if (sym === 256) break;
+        else {
+          sym -= 257; len = LB[sym] + bits(LE[sym]); d = lees(db); dist = DB[d] + bits(DE[d]);
+          for (i = op - dist; len--;) uit[op++] = uit[i++];
+        }
+      }
+    } while (!laatste);
+    if (op !== ruim) throw new Error('inflate');
+    return uit;
+  }
+  function pakUit(u8, ruim) {
+    var klaar = null;
+    try {
+      if (window.DecompressionStream && window.Response && window.Blob && Blob.prototype.stream) {
+        klaar = new Response(new Blob([u8]).stream().pipeThrough(new window.DecompressionStream('deflate'))).arrayBuffer().then(function (b) {
+          if (b.byteLength !== ruim) throw new Error('maat');
+          return b;
+        });
+      }
+    } catch (e) { klaar = null; }
+    function zelf() { return blaasOp(u8, ruim).buffer; }
+    return klaar ? klaar.then(null, zelf) : new Promise(function (ok) { ok(zelf()); });
+  }
+  // De andere pakketten van de publieke versie: de basis zegt in `delen` waar ze staan. Elk met dezelfde sleutel.
+  // → belofte met { stem: pak of null, code: pak of null }; mislukt als er één niet te halen of niet te openen is
+  function haalDelen(pak, ruw) {
+    var lijst = (Array.isArray(pak.kop.delen) ? pak.kop.delen : []).filter(function (d) { return d && typeof d.naam === 'string' && /^[a-z0-9-]+\.bin$/.test(d.pad || ''); });
+    return Promise.all(lijst.map(function (d) {
+      return haalBestand(d.pad).then(function (buf) { return ontsleutel(buf, ruw, 'letterspel-deel'); }).then(function (deel) {
+        if (deel.kop.deel !== d.naam) throw new Error('vorm');
+        if (deel.kop.pers !== 'deflate') return deel;
+        return pakUit(new Uint8Array(deel.inhoud, deel.begin), +deel.kop.ruim || 0).then(function (los) { return { kop: deel.kop, inhoud: los, begin: 0 }; });
+      });
+    })).then(function (rij) {
+      var uit = { stem: null, code: null };
+      rij.forEach(function (deel) { if (deel.kop.deel === 'stem' || deel.kop.deel === 'code') uit[deel.kop.deel] = deel; });
+      return uit;
+    });
+  }
+  // Het pakket openmaken met de sleutel en alles klaarzetten. → 'goed' | 'fout' (de sleutel past niet) | 'net' (de
+  // sleutel past, maar een van de andere pakketten is er nu niet: de sleutel blijft, later opnieuw proberen)
+  function maakOpen(buf, ruw) {
+    return ontsleutel(buf, ruw).then(function (pak) {
+      return haalDelen(pak, ruw).then(function (delen) { neemOver(pak, ruw, buf, delen); return 'goed'; }, function () { pakketBelofte = null; return 'net'; });
+    }, function () { return 'fout'; });
   }
   function personen(lijst) {
     return (Array.isArray(lijst) ? lijst : []).filter(function (p) { return p && typeof p.naam === 'string' && p.naam; }).map(function (p) {
@@ -160,8 +274,8 @@
       return r;
     });
   }
-  function neemOver(pak, ruw, buf) {
-    var kop = pak.kop, g = kop.gezin || {}, w = kop.wolk;
+  function neemOver(pak, ruw, buf, delen) {
+    var kop = pak.kop, g = kop.gezin || {}, w = kop.wolk, stem = (delen && delen.stem) || pak, code = (delen && delen.code) || pak;
     // online bewaren: alleen als het pakket een opslagplek en een toegangsbewijs meegeeft
     wolkDeel = null; kluisRuw = null; kluisKop = null;
     if (w && typeof w.repo === 'string' && /^[\w.-]+\/[\w.-]+$/.test(w.repo) && typeof w.token === 'string' && w.token.length >= 20 && ruw && buf) {
@@ -172,20 +286,20 @@
       if (lokaal && !wolkDeel.api && vraag.wolk !== '1') wolkDeel = null;
       kluisRuw = new Uint8Array(ruw); kluisKop = new Uint8Array(buf.slice(0, VAST_DEEL));
     }
-    records = (Array.isArray(kop.opnames) ? kop.opnames : []).filter(function (r) {
-      return r && typeof r.id === 'string' && r.id.indexOf('/') > 0 && r.lengte > 0 && r.lengte % 2 === 0 && pak.begin + r.van + r.lengte <= pak.inhoud.byteLength;
+    records = (Array.isArray(stem.kop.opnames) ? stem.kop.opnames : []).filter(function (r) {
+      return r && typeof r.id === 'string' && r.id.indexOf('/') > 0 && r.lengte > 0 && r.lengte % 2 === 0 && stem.begin + r.van + r.lengte <= stem.inhoud.byteLength;
     }).map(function (r) {
       var sr = +r.sr || 24000;
       return { id: r.id, sr: sr, duur: r.lengte / 2 / sr, gemaakt: r.gemaakt || '', golf: Array.isArray(r.golf) ? r.golf : null,
-        pcm: pak.inhoud.slice(pak.begin + r.van, pak.begin + r.van + r.lengte), vast: true };
+        pcm: stem.inhoud.slice(stem.begin + r.van, stem.begin + r.van + r.lengte), vast: true };
     });
     LS.Gezin = { vrienden: personen(g.vrienden), familie: personen(g.familie) };
-    Slot.aantal = records.length; Slot.gemaakt = kop.gemaakt || '';
-    // de publieke versie heeft de spelcode in het pakket: de bron van elk script, in de volgorde waarin ze moeten draaien
+    Slot.aantal = records.length; Slot.gemaakt = stem.kop.gemaakt || kop.gemaakt || '';
+    // de publieke versie heeft de spelcode in een pakket: de bron van elk script, in de volgorde waarin ze moeten draaien
     var lees = new TextDecoder('utf-8');
-    spelBron = (Array.isArray(kop.scripts) ? kop.scripts : []).filter(function (s) {
-      return s && typeof s.naam === 'string' && s.lengte > 0 && pak.begin + s.van + s.lengte <= pak.inhoud.byteLength;
-    }).map(function (s) { return { naam: s.naam, tekst: lees.decode(new Uint8Array(pak.inhoud, pak.begin + s.van, s.lengte)) }; });
+    spelBron = (Array.isArray(code.kop.scripts) ? code.kop.scripts : []).filter(function (s) {
+      return s && typeof s.naam === 'string' && s.lengte > 0 && code.begin + s.van + s.lengte <= code.inhoud.byteLength;
+    }).map(function (s) { return { naam: s.naam, tekst: lees.decode(new Uint8Array(code.inhoud, code.begin + s.van, s.lengte)) }; });
   }
   Slot.opnames = function () { return records; };
   /* Voor js/wolk.js. Geeft één keer { wolk: { repo, token, tak }, sleutel (AES-GCM), merk (HMAC, voor bestandsnamen), kop (versie, rondes, zout) }.
@@ -211,7 +325,11 @@
       var u8 = new Uint8Array(buf), rondes = new DataView(buf).getUint32(1), zout = u8.slice(5, VAST_DEEL);
       if (rondes < 100000 || rondes > 20000000) return 'net';
       return sleutelUit(c, zout, rondes).then(function (ruw) {
-        return ontsleutel(buf, ruw).then(function (pak) { neemOver(pak, ruw, buf); return bewaarSleutel(ruw, zout).then(function () { return 'goed'; }, function () { return 'goed'; }); }, function () { return 'fout'; });
+        return maakOpen(buf, ruw).then(function (uit) {
+          if (uit === 'fout') return uit;
+          // de code klopt: de sleutel bewaren, ook als een van de andere pakketten er nu even niet is
+          return bewaarSleutel(ruw, zout).then(function () { return uit; }, function () { return uit; });
+        });
       });
     }, function () { return 'net'; });
   }
@@ -219,7 +337,7 @@
     if (!kanRekenen()) return Promise.resolve('kan-niet');
     return haalPakket().then(function (buf) {
       var ruw; try { ruw = vanB64(k.s); } catch (e) { return 'fout'; }
-      return ontsleutel(buf, ruw).then(function (pak) { neemOver(pak, ruw, buf); Slot.onthouden = true; return 'goed'; }, function () { return 'fout'; });
+      return maakOpen(buf, ruw).then(function (uit) { if (uit === 'goed') Slot.onthouden = true; return uit; });
     }, function () { return 'net'; });
   }
 
@@ -378,50 +496,176 @@
           lsZet(MIS, JSON.stringify(m));
           schud();
           if (wachtNog() > 0) telAf(); else { zeg(TEKST.fout); naMis(); }
-        } else zeg(uit === 'kan-niet' ? TEKST.kanNiet : TEKST.net);
+        } else {
+          zeg(uit === 'kan-niet' ? TEKST.kanNiet : TEKST.net);
+          // de code kan goed zijn terwijl een pakket er even niet is: dan staat de sleutel al op het toestel en probeert het slot het zelf opnieuw
+          if (uit === 'net') { clearTimeout(netTimer); netTimer = setTimeout(function () { if (!Slot.open && Slot.staat === 'slot') leesSleutel().then(function (k) { if (k) metSleutel(k); }); }, 4000); }
+        }
       }, function () { zetBezig(false); zeg(TEKST.net); });
     }, 60);
   }
-  /* ---------- een nieuwe versie ophalen terwijl het slot in beeld staat ----------
-     Het aanmelden van de service worker (sw.js) en het overnemen van een nieuwe versie zit in js/bewaar.js, dus pas na het
-     ontgrendelen. Wie op het slot staat (een nieuwe gezinscode, of een fout in het slot zelf) zou zo op de oude versie
-     blijven hangen. Daarom kijkt het slot zelf: is er al een service worker van een eerdere keer, dan vraagt het om de
-     nieuwste versie, laat die het overnemen en laadt de pagina één keer opnieuw. Op het slot is er geen spel bezig, dus
-     dat kan altijd; alleen niet terwijl iemand typt (wacht tot het veld leeg is of 3 tellen stil) of terwijl het rekent.
-     Na het ontgrendelen doet dit niets meer: dan regelt js/bewaar.js het, op een rustig moment in het spel. */
-  var laatstGetypt = 0, kijktNaarVersie = false;
+  /* ---------- een nieuwe versie van het spel (service worker, sw.js): LS.Slot.bij ----------
+     Een webapp op de iPhone kan niets doen terwijl hij dicht is. Dus: zodra hij opent meteen kijken, en als er een
+     nieuwe versie is daar kort op wachten, nog vóór het spel begint (wachtOpNieuw). Dit bestand komt altijd als eerste
+     binnen, dus dit werkt ook als de rest van het spel nog oud is.
+       Bij.staat   ''       niets nieuws (of nog niet bekend)
+                   'haalt'  een nieuwe versie is aan het installeren (Bij.deel loopt van 0 naar 1, sw.js meldt hoe ver)
+                   'klaar'  de nieuwe versie staat klaar; ze neemt het over zodra het mag (Bij.neemOver)
+                   'neemt'  het overnemen is gevraagd; daarna laadt de pagina één keer opnieuw
+     Herladen gebeurt alleen op een rustig moment: op het slot als niemand typt, in het spel als js/bewaar.js zegt dat
+     het kan (Bij.rustig: het laden, het startscherm, de wereld zonder vinger; nooit in een spel). */
+  var SW = null; try { SW = ('serviceWorker' in navigator) && location.protocol !== 'file:' ? navigator.serviceWorker : null; } catch (e) { SW = null; }
+  var Bij = Slot.bij = { staat: '', deel: 0, bytes: 0, totaal: 0, versie: '', reg: null, rustig: null, gekeken: false, kijkFout: false, mislukt: 0, herhaald: 0, laatst: 0,
+    KIJK: 1500,        // zo lang wacht het openen hooguit op het antwoord "is er iets nieuws?"
+    GRENS: 20000,      // zo lang wacht het openen hooguit op het binnenhalen; daarna start het spel en volgt de nieuwe versie later
+    STIL: 8000 };      // komt er zo lang geen byte binnen, dan wacht het openen niet langer
+  var t0Pagina = Date.now(), laatstGetypt = 0, hadBaas = !!(SW && SW.controller), herlaadt = false, gevolgd = null, haaltSinds = 0, neemtSinds = 0, beweging = 0;
   function magHerladen() { return !Slot.open && !!wortel && Slot.staat === 'slot' && (!veld || !veld.value || Date.now() - laatstGetypt > 3000); }
-  function haalNieuweVersie() {
-    if (kijktNaarVersie || !('serviceWorker' in navigator) || location.protocol === 'file:') return;
-    kijktNaarVersie = true;
-    var SW = navigator.serviceWorker, had = !!SW.controller, herladen = false;
-    function alsHetKan(fn) {
-      var kijk = setInterval(function () {
-        if (Slot.open) { clearInterval(kijk); return; }                    // ontgrendeld: js/bewaar.js neemt het over
-        if (magHerladen()) { clearInterval(kijk); fn(); }
-      }, 300);
+  function rustigNu() {
+    if (!Slot.open) return !wortel || magHerladen();                // vóór het spel: altijd, behalve als iemand de code typt
+    try { return Bij.rustig ? !!Bij.rustig() : true; } catch (e) { return true; }
+  }
+  // herladen na een overname, hooguit 3 keer per minuut vanzelf (een versie die blijft haperen mag het spel niet vasthouden)
+  function lussen() { var l = []; try { l = JSON.parse(window.sessionStorage.getItem('lsbij') || '[]'); } catch (e) { l = []; } return (Array.isArray(l) ? l : []).filter(function (x) { return Date.now() - x < 60000; }); }
+  function herlaad() {
+    if (herlaadt) return; herlaadt = true;
+    var kijk = setInterval(function () {
+      if (!rustigNu()) return;
+      clearInterval(kijk);
+      try { var l = lussen(); l.push(Date.now()); window.sessionStorage.setItem('lsbij', JSON.stringify(l)); } catch (e) { /* stil */ }
+      try { location.reload(); } catch (e) { /* stil */ }
+    }, 250);
+  }
+  function zetStaat(s) {
+    if (s === 'haalt' && Bij.staat !== 'haalt') { haaltSinds = beweging = Date.now(); Bij.deel = 0; Bij.bytes = 0; Bij.totaal = 0; }
+    if (s === 'neemt' && Bij.staat !== 'neemt') neemtSinds = Date.now();
+    Bij.staat = s;
+  }
+  Bij.volg = function (reg) {
+    if (!reg || !SW) return;
+    Bij.reg = reg;
+    function volgWerker(n) {
+      if (!n || n === gevolgd) return; gevolgd = n;
+      if (SW.controller) zetStaat('haalt');
+      n.addEventListener('statechange', function () {
+        if (n !== gevolgd) return;
+        if (n.state === 'installed') { if (SW.controller) { Bij.deel = 1; zetStaat('klaar'); } }
+        else if (n.state === 'redundant') { if (Bij.staat === 'haalt') { Bij.mislukt++; zetStaat(''); } gevolgd = null; }      // de installatie kwam niet af: later opnieuw
+        else if (n.state === 'activated') { if (Bij.staat !== 'neemt') zetStaat(''); }
+      });
     }
-    function neemOver(reg) { alsHetKan(function () { try { if (reg.waiting) reg.waiting.postMessage('neem-over'); } catch (e) { /* stil */ } }); }
+    if (reg.waiting && SW.controller) { Bij.deel = 1; zetStaat('klaar'); }
+    volgWerker(reg.installing);
+    if (!reg.lsVolgt) { reg.lsVolgt = true; reg.addEventListener('updatefound', function () { volgWerker(reg.installing); }); }
+  };
+  // Vraag de browser om nu te kijken of er een nieuwe versie is. → belofte: true als er een binnenkomt of klaarstaat
+  Bij.kijk = function () {
+    var reg = Bij.reg;
+    if (!reg || !SW) return Promise.resolve(false);
+    Bij.laatst = Date.now();
+    var v; try { v = reg.update(); } catch (e) { v = Promise.reject(e); }
+    return Promise.resolve(v).then(function () {
+      Bij.volg(reg); Bij.gekeken = true; Bij.kijkFout = false;
+      return !!(SW.controller && (reg.installing || reg.waiting));
+    }, function () { Bij.gekeken = true; Bij.kijkFout = true; return false; });           // geen internet: prima
+  };
+  // Is het nog redelijk om het openen (het laadscherm) te laten wachten op de nieuwe versie?
+  Bij.geduld = function () {
+    var nu = Date.now();
+    if (herlaadt || Bij.staat === 'klaar') return true;
+    if (Bij.staat === 'neemt') return nu - neemtSinds < 6000;
+    if (Bij.staat === 'haalt') return nu - haaltSinds < Bij.GRENS && nu - beweging < Bij.STIL;
+    return false;
+  };
+  // De nieuwe versie die klaarstaat laten overnemen. Daarna wisselt de baas (controllerchange) en laadt de pagina opnieuw.
+  Bij.neemOver = function () {
+    var reg = Bij.reg;
+    if (!reg || !reg.waiting) return false;
+    try { reg.waiting.postMessage('neem-over'); } catch (e) { return false; }
+    if (Bij.staat !== 'neemt') {
+      zetStaat('neemt');
+      // Komt het bericht niet aan (de wachtende service worker werd net gestopt of gestart), dan elke 2 tellen opnieuw.
+      // Is er na een halve minuut nog niets gebeurd, dan staat de versie weer gewoon klaar voor het volgende rustige moment.
+      var keer = 0, klok = setInterval(function () {
+        if (herlaadt || Bij.staat !== 'neemt') { clearInterval(klok); return; }
+        if (!reg.waiting) { clearInterval(klok); if (!herlaadt) zetStaat(''); return; }
+        if (++keer > 15) { clearInterval(klok); zetStaat('klaar'); return; }
+        Bij.herhaald++;
+        try { reg.waiting.postMessage('neem-over'); } catch (e) { /* stil */ }
+      }, 2000);
+    }
+    return true;
+  };
+  if (SW) {
     try {
       SW.addEventListener('controllerchange', function () {
-        if (!had) { had = true; return; }                                   // de allereerste keer: niets herladen
-        if (herladen || Slot.open) return;
-        alsHetKan(function () { if (herladen) return; herladen = true; try { location.reload(); } catch (e) { /* stil */ } });
+        if (!hadBaas) { hadBaas = true; return; }                     // de allereerste keer: niets herladen
+        herlaad();
+      });
+      SW.addEventListener('message', function (e) {
+        var d = e.data;
+        if (!d || d.soort !== 'ls-voortgang') return;
+        if (d.fase === 'kern' && Bij.staat === 'haalt' && d.totaal > 0) {
+          var deel = Math.max(0, Math.min(1, d.bytes / d.totaal));
+          if (deel > Bij.deel) beweging = Date.now();
+          Bij.deel = deel; Bij.bytes = d.bytes; Bij.totaal = d.totaal; Bij.versie = d.versie || '';
+        }
       });
       SW.getRegistration().then(function (reg) {
-        if (!reg) return;
-        if (reg.waiting && SW.controller) neemOver(reg);
-        reg.addEventListener('updatefound', function () {
-          var n = reg.installing; if (!n) return;
-          n.addEventListener('statechange', function () { if (n.state === 'installed' && SW.controller) neemOver(reg); });
-        });
-        // nu kijken, en opnieuw als de app weer naar voren komt of het slot lang in beeld staat
-        function kijk() { if (Slot.open) { clearInterval(elkeMinuut); return; } try { reg.update().catch(function () { /* geen internet: prima */ }); } catch (e) { /* stil */ } }
-        var elkeMinuut = setInterval(kijk, 60000);
-        document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') kijk(); });
-        kijk();
-      }).catch(function () { /* zonder service worker werkt het slot gewoon */ });
-    } catch (e) { /* stil */ }
+        if (!reg) { Bij.gekeken = true; return; }
+        Bij.volg(reg);
+        if (vraag.sw !== '0') Bij.kijk();
+      }).catch(function () { Bij.gekeken = true; });
+    } catch (e) { Bij.gekeken = true; }
+  } else Bij.gekeken = true;
+
+  // Het rustige balkje onder het hangslot, zonder tekst: zo ver is de nieuwe versie binnen.
+  var balkEl = null;
+  function toonBalk(deel) {
+    toonWacht();
+    if (!wachtEl) return;
+    if (!balkEl) {
+      var baan = el('span'); balkEl = el('i');
+      baan.id = 'slot-balk'; baan.setAttribute('role', 'progressbar');
+      baan.style.cssText = 'display:block;width:132px;height:8px;margin:22px auto 0;border-radius:4px;background:rgba(255,247,230,.16);overflow:hidden';
+      balkEl.style.cssText = 'display:block;height:100%;width:0;border-radius:4px;background:#FFC62B;transition:width .5s ease-out';
+      baan.appendChild(balkEl); wachtEl.appendChild(baan);
+    }
+    balkEl.style.width = Math.round(Math.max(0.04, Math.min(1, deel)) * 100) + '%';
+  }
+  /* Bij het openen: is er een nieuwe versie, dan daar even op wachten vóór het spel begint. Eén keer openen is dan genoeg.
+     - is er al een service worker de baas, dan is er bij het laden al om de nieuwste versie gevraagd (hierboven);
+     - het antwoord daarop mag hooguit Bij.KIJK duren, geteld vanaf het begin van de pagina (zonder internet: niet wachten);
+     - komt er een nieuwe versie binnen, dan loopt het balkje mee en neemt ze het over zodra ze er is: de pagina laadt
+       dan één keer opnieuw, nog voordat er iets van het spel gestart is;
+     - na Bij.GRENS, of als er Bij.STIL lang niets binnenkomt, start het spel gewoon op de versie die er is. */
+  function wachtOpNieuw() {
+    if (!SW || !SW.controller || vraag.sw === '0' || lussen().length >= 3) return Promise.resolve();
+    return new Promise(function (ok) {
+      var klaar = false, kijk;
+      function door() { if (klaar) return; klaar = true; clearInterval(kijk); ok(); }
+      function stap() {
+        var nu = Date.now();
+        if (herlaadt) return;                                         // de pagina laadt zo opnieuw
+        if (Bij.staat === 'klaar') { toonBalk(1); if (!Bij.neemOver()) door(); return; }
+        if (Bij.staat) { toonBalk(Bij.deel); if (!Bij.geduld()) door(); return; }
+        if (Bij.gekeken || nu - t0Pagina > Bij.KIJK || navigator.onLine === false) door();
+      }
+      kijk = setInterval(stap, 100); stap();
+    });
+  }
+  // Op het slot (nog niet ontgrendeld): de nieuwe versie neemt het over zodra niemand typt, en het slot kijkt elke
+  // minuut en bij terugkomen op de voorgrond opnieuw. Na het ontgrendelen regelt js/bewaar.js de momenten.
+  var kijktOpSlot = false;
+  function haalNieuweVersie() {
+    if (kijktOpSlot || !SW) return;
+    kijktOpSlot = true;
+    var elke = setInterval(function () {
+      if (Slot.open) { clearInterval(elke); return; }
+      if (Bij.staat === 'klaar' && magHerladen()) Bij.neemOver();
+      else if (!Bij.staat && Date.now() - Bij.laatst > 60000 && document.visibilityState !== 'hidden') Bij.kijk();
+    }, 300);
+    document.addEventListener('visibilitychange', function () { if (!Slot.open && document.visibilityState === 'visible' && Date.now() - Bij.laatst > 5000) Bij.kijk(); });
   }
 
   function toonSlot(eersteMelding) {
@@ -489,7 +733,7 @@
 
   function metSleutel(k) {
     return probeerSleutel(k).then(function (uit) {
-      if (uit === 'goed') { gaOpen(false); return true; }
+      if (uit === 'goed') { wachtOpNieuw().then(function () { gaOpen(false); }); return true; }
       if (uit === 'fout') return wisSleutel().then(function () { return false; });      // het pakket heeft een nieuwe code gekregen
       if (uit === 'net') {
         // de sleutel is er, het pakket even niet: blijven proberen zonder de sleutel weg te gooien
